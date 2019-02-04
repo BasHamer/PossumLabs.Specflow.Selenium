@@ -1,2 +1,4 @@
 # PossumLabs.Specflow.Selenium
-the selenium wrappers for Possum Labs Specflow libraries.
+The selenium wrappers for the Possum Lab Specflow implementation
+
+Please see https://github.com/BasHamer/PossumLabs.Specflow for tutorials and examples.
