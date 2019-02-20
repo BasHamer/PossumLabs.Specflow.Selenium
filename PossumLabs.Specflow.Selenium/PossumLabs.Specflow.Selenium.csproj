@@ -1,0 +1,36 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <Description>For examples please see https://github.com/BasHamer/PossumLabs.Specflow
+
+This library is intended to be used with Specflow and adds a wrapper around selenium.</Description>
+    <Authors>Bas Hamer</Authors>
+    <Company>Possum Labs</Company>
+    <Product>Possum Lab</Product>
+    <Copyright>MIT</Copyright>
+    <PackageLicenseUrl>https://github.com/BasHamer/PossumLabs.Specflow.Core/blob/master/LICENSE</PackageLicenseUrl>
+    <PackageProjectUrl>https://PossumLabs.com</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/BasHamer/PossumLabs.Specflow.Core</RepositoryUrl>
+    <RepositoryType>Git</RepositoryType>
+    <PackageTags>BDD, SpecFlow, gherkin, cucumber, Selenium</PackageTags>
+    <PackageReleaseNotes>initial version</PackageReleaseNotes>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AnimatedGif" Version="1.0.3" />
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="2.2.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="2.2.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="2.2.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.FileExtensions" Version="2.2.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="2.2.0" />
+    <PackageReference Include="Microsoft.Extensions.FileProviders.Abstractions" Version="2.2.0" />
+    <PackageReference Include="Microsoft.Extensions.FileSystemGlobbing" Version="2.2.0" />
+    <PackageReference Include="Microsoft.Extensions.Primitives" Version="2.2.0" />
+    <PackageReference Include="PossumLabs.Specflow.Core" Version="1.0.0-CI00002" />
+    <PackageReference Include="Selenium.Support" Version="3.141.0" />
+    <PackageReference Include="Selenium.WebDriver" Version="3.141.0" />
+    <PackageReference Include="System.Drawing.Common" Version="4.5.1" />
+  </ItemGroup>
+
+</Project>
