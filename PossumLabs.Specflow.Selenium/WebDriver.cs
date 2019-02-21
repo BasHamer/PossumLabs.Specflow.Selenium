@@ -60,7 +60,7 @@ namespace PossumLabs.Specflow.Selenium
             var loggingWebdriver = new LoggingWebDriver(Driver, MovieLogger);
             try
             {
-                var possilbeTables = GetTables(headers.Count() ).ToList();
+                var possilbeTables = GetTables(headers.Count()).ToList();
                 Func<string, string, bool> comparer = (s1, s2) => s1.Equals(s2, comparison);
 
                 var tableElements = possilbeTables.Where(t => headers.Where(h => !string.IsNullOrEmpty(h)).Except(t.Header.Keys, 
@@ -68,6 +68,9 @@ namespace PossumLabs.Specflow.Selenium
 
                 if (tableElements.One())
                     return tableElements.First();
+                //Exact match overrides in case of multiples.
+                if (tableElements.Where(x => headers.Count() == x.MaxColumnIndex).One())
+                    return tableElements.Where(x => headers.Count() == x.MaxColumnIndex).First();
                 if (tableElements.Many())
                 {
                     if (index == null)

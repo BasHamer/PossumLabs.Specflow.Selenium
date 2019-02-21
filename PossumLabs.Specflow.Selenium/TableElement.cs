@@ -26,6 +26,9 @@ namespace PossumLabs.Specflow.Selenium
         private IWebElement RootElement { get; }
         private IWebDriver Driver { get; }
         public Dictionary<string, int> Header { get; }
+        /// <summary>
+        /// This is one based index used for xpaths.
+        /// </summary>
         public int MaxColumnIndex { get; set; }
 
         public int GetRowId(string key, string column = null)
@@ -63,10 +66,10 @@ namespace PossumLabs.Specflow.Selenium
                 if(!Header.ContainsKey(column))
                     throw new Exception($"the column {column} is not part of the table");
                 var indexer = Header[column];
-                var xpath = $"{Prefix}/tr[(td[{indexer}])[{XpathProvider.TextMatch(key)}] or (td[{indexer}])/*[{XpathProvider.TextMatch(key)}] or (td[{indexer}])/*[@value = {key.XpathEncode()}] ]/preceding-sibling::tr";
-                var count = Driver.FindElements(By.XPath(xpath)).Count() + 1;
                 var rowMatch = $"{Prefix}/tr[(td[{indexer}])[{XpathProvider.TextMatch(key)}] or (td[{indexer}])/*[{XpathProvider.TextMatch(key)}] or (td[{indexer}])/*/*[{XpathProvider.TextMatch(key)}] or (td[{indexer}])/*[@value = {key.XpathEncode()}]]";
-
+                var xpath = $"{rowMatch}/preceding-sibling::tr";
+                var count = Driver.FindElements(By.XPath(xpath)).Count() + 1;
+                
                 var rows = Driver.FindElements(By.XPath(rowMatch));
                 if (rows.One())
                     return count;
