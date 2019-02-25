@@ -49,7 +49,7 @@ namespace PossumLabs.Specflow.Selenium
                 WebElement.Clear();
             }
             catch { }
-            if (text == null)
+            if (string.IsNullOrWhiteSpace(text))
                 return;
 
             //TODO: v2 Check Boxes

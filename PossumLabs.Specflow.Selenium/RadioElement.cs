@@ -16,17 +16,18 @@ namespace PossumLabs.Specflow.Selenium
             Options = new Dictionary<string, IWebElement>();
             foreach(var e in elements)
             {
-                Options.Add(e.GetAttribute("value"), e);
+                //TODO: unsafe
+                Options.AddOrUpdate(e.GetAttribute("value"), e);
                 if (!string.IsNullOrWhiteSpace(e.GetAttribute("aria-labelledby")))
                 {
                     var lables = e.GetAttribute("aria-labelledby").Split(' ').Select(id => driver.FindElement(By.Id(id)));
                     var text = lables.Select(l => l.Text).OrderBy(s => s).Aggregate((x, y) => x + " " + y);
-                    Options.Add(text, e);
+                    Options.AddUnlessPresent(text, e);
                     continue;
                 }
                 if (!string.IsNullOrWhiteSpace(e.GetAttribute("aria-label")))
                 {
-                    Options.Add(e.GetAttribute("aria-label"), e);
+                    Options.AddUnlessPresent(e.GetAttribute("aria-label"), e);
                     continue;
                 }
                 var forLabels = driver.FindElements(By.XPath($"//label[@for='{e.GetAttribute("id")}']"));
@@ -34,18 +35,18 @@ namespace PossumLabs.Specflow.Selenium
                 {
                     var lables = forLabels;
                     var text = lables.Select(l => l.Text).OrderBy(s => s).Aggregate((x, y) => x + " " + y);
-                    Options.Add(text, e);
+                    Options.AddUnlessPresent(text, e);
                     continue;
                 }
                 if (!string.IsNullOrWhiteSpace(e.Text))
                 {
-                    Options.Add(e.Text, e);
+                    Options.AddUnlessPresent(e.Text, e);
                     continue;
                 }
                 var parrent = e.FindElement(By.XPath(".."));
                 if(parrent.TagName == "label")
                 {
-                    Options.Add(parrent.Text, e);
+                    Options.AddUnlessPresent(parrent.Text, e);
                     continue;
                 }
             }

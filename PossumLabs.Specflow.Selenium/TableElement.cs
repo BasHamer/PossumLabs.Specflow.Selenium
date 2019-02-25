@@ -149,7 +149,11 @@ namespace PossumLabs.Specflow.Selenium
                     index++;
                     if (string.IsNullOrWhiteSpace(h.Text))
                     {
-                        var elements = Driver.FindElements(By.XPath($"{headPrefix}/tr[1]/*[self::td or self::th][{index}]/*[self::div or self::ul]/*[text() or @value]"));
+                        var elements = Driver.FindElements(By.XPath($"{headPrefix}/tr[1]/*[self::td or self::th][{index}]/*[text() or @value]"))
+                            .Where(x=>x.Displayed);
+                        if(elements.None())
+                            elements = Driver.FindElements(By.XPath($"{headPrefix}/tr[1]/*[self::td or self::th][{index}]/*[self::div or self::ul]/*[text() or @value]"))
+                                .Where(x => x.Displayed);
                         foreach (var e in elements)
                         {
                             var text = e.Text;

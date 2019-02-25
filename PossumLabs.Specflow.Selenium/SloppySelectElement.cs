@@ -10,14 +10,10 @@ namespace PossumLabs.Specflow.Selenium
 {
     public class SloppySelectElement : SelectElement
     {
-        private Dictionary<string, IWebElement> Options { get; }
-
         public SloppySelectElement(IWebElement element, IWebDriver driver) : base(element, driver)
         {
            
         }
-
-
 
         public static string ToCammelCase(string s)
         {
@@ -95,12 +91,26 @@ namespace PossumLabs.Specflow.Selenium
                         OldStyleSelect.SelectByValue(options.First().GetAttribute("value"));
                         return;
                     }
+                    if(options.Many())
+                    {
+                        if(options.One(x=>x.Text.ToUpper() == text.ToUpper()))
+                            OldStyleSelect.SelectByValue(options.First(x => x.Text.ToUpper() == text.ToUpper()).GetAttribute("value"));
+                        else
+                            OldStyleSelect.SelectByValue(options.First().GetAttribute("value"));
+                    }
                     options = FindByContains(id, key);
 
                     if (options.One())
                     {
                         OldStyleSelect.SelectByValue(options.First().GetAttribute("value"));
                         return;
+                    }
+                    if (options.Many())
+                    {
+                        if (options.One(x => x.Text.ToUpper().Contains(text.ToUpper())))
+                            OldStyleSelect.SelectByValue(options.First(x => x.Text.ToUpper().Contains(text.ToUpper())).GetAttribute("value"));
+                        else
+                            OldStyleSelect.SelectByValue(options.First().GetAttribute("value"));
                     }
                 }
                 throw new GherkinException($"Unable to find {text} in the selection, only found {OldStyleSelect.Options.LogFormat(x => x.Text)}");
@@ -113,7 +123,7 @@ namespace PossumLabs.Specflow.Selenium
                 else if (options.Many())
                     throw new GherkinException("too many matches"); //TODO: cleanup
                 else
-                    throw new GherkinException("no matches"); //TODO: cleanup
+                    throw new GherkinException("no matches"); 
             }
         }
 
