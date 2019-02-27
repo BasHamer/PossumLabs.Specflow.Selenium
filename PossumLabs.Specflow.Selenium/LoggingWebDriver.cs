@@ -50,7 +50,7 @@ namespace PossumLabs.Specflow.Selenium
         public bool IsActionExecutor => ActionExecutor.IsActionExecutor;
 
         private IWebDriver Driver;
-        public string GetLogs() => Messages.LogFormat();
+        public string GetLogs() => Messages.Where(x => !string.IsNullOrEmpty(x)).LogFormat();
 
         public void Close() => Driver.Close();
 
@@ -73,7 +73,10 @@ namespace PossumLabs.Specflow.Selenium
 
         public ReadOnlyCollection<IWebElement> FindElements(By by)
         {
-            Messages.Add(by.ToString());
+            lock (Messages)
+            {
+                Messages.Add(by.ToString());
+            }
             var elements = Driver.FindElements(by);
             if (elements != null && elements.Any() && by.ToString().StartsWith("By.XPath: "))
                 VisualLog(by);
@@ -92,7 +95,12 @@ namespace PossumLabs.Specflow.Selenium
         }
 
         public void Log(string message)
-            => Messages.Add(message);
+        {
+            lock (Messages)
+            {
+                Messages.Add(message);
+            }
+        }
 
         public void Dispose() => Driver.Dispose();
 

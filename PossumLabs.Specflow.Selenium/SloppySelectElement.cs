@@ -97,6 +97,7 @@ namespace PossumLabs.Specflow.Selenium
                             OldStyleSelect.SelectByValue(options.First(x => x.Text.ToUpper() == text.ToUpper()).GetAttribute("value"));
                         else
                             OldStyleSelect.SelectByValue(options.First().GetAttribute("value"));
+                        return;
                     }
                     options = FindByContains(id, key);
 
@@ -111,6 +112,7 @@ namespace PossumLabs.Specflow.Selenium
                             OldStyleSelect.SelectByValue(options.First(x => x.Text.ToUpper().Contains(text.ToUpper())).GetAttribute("value"));
                         else
                             OldStyleSelect.SelectByValue(options.First().GetAttribute("value"));
+                        return;
                     }
                 }
                 throw new GherkinException($"Unable to find {text} in the selection, only found {OldStyleSelect.Options.LogFormat(x => x.Text)}");

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using OpenQA.Selenium;
 using PossumLabs.Specflow.Core;
 
 namespace PossumLabs.Specflow.Selenium
@@ -44,6 +45,18 @@ namespace PossumLabs.Specflow.Selenium
             }
 
             return addValue;
+        }
+
+        public static string SafeGetProperty(this IWebElement webElement, string name)
+        {
+            try
+            {
+                return webElement.GetProperty(name);
+            }
+            catch
+            {
+                return null;
+            }
         }
     }
 }

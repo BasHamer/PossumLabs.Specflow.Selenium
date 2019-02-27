@@ -1,5 +1,6 @@
 ﻿using OpenQA.Selenium;
 using System;
+using System.Linq;
 using System.Collections.Generic;
 using System.Text;
 
@@ -13,8 +14,10 @@ namespace PossumLabs.Specflow.Selenium.Selectors
                 return new SelectElement(e, driver);
             if (e.TagName == "input" && e.GetAttribute("type") == "radio")
             {
-                var elements = driver.FindElements(By.XPath($"//input[@type='radio' and @name='{e.GetAttribute("name")}']"));
-                return new RadioElement(elements, driver);
+                var elements = driver.FindElements(By.XPath($"//input[@type='radio' and @name='{e.GetAttribute("name")}']")).ToList();
+                var value = e.GetAttribute("value");
+                var first = elements.Where(x => x.GetAttribute("value") == value);
+                return new RadioElement(first.Concat(elements.Except(first)), driver);
             }
             if (e.TagName == "input" && e.GetAttribute("type") == "checkbox")
             {

@@ -51,12 +51,29 @@ namespace PossumLabs.Specflow.Selenium
             catch { }
             if (string.IsNullOrWhiteSpace(text))
                 return;
-
-            //TODO: v2 Check Boxes
-            WebElement.SendKeys(text);
-            if (Equivalent(WebElement.GetAttribute("value"), text))
-                return;
-
+            try
+            {
+                //TODO: v2 Check Boxes
+                WebElement.SendKeys(text);
+                if (Equivalent(WebElement.GetAttribute("value"), text))
+                    return;
+            }
+            catch (WebDriverException e)
+            {
+                try
+                {
+                    if (WebElement.GetAttribute("readonly") == "true")
+                        throw new InvalidOperationException("element is readonly");
+                }
+                catch(InvalidOperationException ex)
+                {
+                    throw ex;
+                }
+                catch
+                {
+                    throw e;
+                }
+            }
             try
             {
                 WebElement.Clear();

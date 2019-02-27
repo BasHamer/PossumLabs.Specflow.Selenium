@@ -36,6 +36,7 @@ namespace PossumLabs.Specflow.Selenium.Selectors
                     SelectorNames.Clickable,
                     new List<Func<string, IEnumerable<SelectorPrefix>, IWebDriver, IEnumerable<Element>>>
                     {
+                        ByForAttribute,
                         ByNestedInLabel(XpathProvider.ClickableElements),
                         ByNested(XpathProvider.ClickableElements),
                         ByText(XpathProvider.ClickableElements),
@@ -104,7 +105,8 @@ namespace PossumLabs.Specflow.Selenium.Selectors
         protected XpathProvider XpathProvider { get; }
 
         protected static readonly Core.EqualityComparer<IWebElement> Comparer =
-            new Core.EqualityComparer<IWebElement>((x, y) => x.Location == y.Location && x.TagName == y.TagName);
+            new Core.EqualityComparer<IWebElement>((x, y) => 
+            (x.Location == y.Location  && x.TagName == y.TagName));
 
         virtual protected bool Filter(IWebElement e)
         => e is RemoteWebElement && ((RemoteWebElement)e).Displayed && ((RemoteWebElement)e).Enabled;
@@ -280,7 +282,7 @@ namespace PossumLabs.Specflow.Selenium.Selectors
             (target, prefixes, driver) => Permutate(prefixes, driver, (prefix) =>
                 string.IsNullOrWhiteSpace(prefix) ?
                     "//*[1=2]" : //junk, valid xpath that never returns anything. used for prefixes.
-                    $"{prefix}/self::*[{XpathProvider.ContentElements} and {XpathProvider.TextMatch(target)}]");
+                    $"{prefix}[{XpathProvider.ContentElements} and {XpathProvider.TextMatch(target)}]");
 
         virtual protected Func<string, IEnumerable<SelectorPrefix>, IWebDriver, IEnumerable<Element>> ByContentSelfForRow =>
             (target, prefixes, driver) => Permutate(prefixes, driver, (prefix) =>

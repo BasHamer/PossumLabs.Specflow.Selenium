@@ -37,10 +37,9 @@ namespace PossumLabs.Specflow.Selenium
             {
                 
                 var columnLimit = Header.Values.Max();
-                var xpath = $"{Prefix}/tr[td[{XpathProvider.TextMatch(key)}] or td/*[{XpathProvider.TextMatch(key)}] or td/*[@value = {key.XpathEncode()}] ]/preceding-sibling::tr";
+                var rowMatch = $"{Prefix}/tr[td[{XpathProvider.TextMatch(key)} or *[{XpathProvider.TextMatch(key)}] or */*[{XpathProvider.TextMatch(key)}] or *[@value = {key.XpathEncode()}]]]";
+                var xpath = $"{rowMatch}/preceding-sibling::tr";
                 var count = Driver.FindElements(By.XPath(xpath)).Count() + 1;
-                var rowMatch = $"{Prefix}/tr[td[{XpathProvider.TextMatch(key)}] or td/*[{XpathProvider.TextMatch(key)}] or td/*/*[{XpathProvider.TextMatch(key)}] or td/*[@value = {key.XpathEncode()}]]";
-
                 var rows = Driver.FindElements(By.XPath(rowMatch));
 
                 if (rows.None())
@@ -66,7 +65,7 @@ namespace PossumLabs.Specflow.Selenium
                 if(!Header.ContainsKey(column))
                     throw new Exception($"the column {column} is not part of the table");
                 var indexer = Header[column];
-                var rowMatch = $"{Prefix}/tr[(td[{indexer}])[{XpathProvider.TextMatch(key)}] or (td[{indexer}])/*[{XpathProvider.TextMatch(key)}] or (td[{indexer}])/*/*[{XpathProvider.TextMatch(key)}] or (td[{indexer}])/*[@value = {key.XpathEncode()}]]";
+                var rowMatch = $"{Prefix}/tr[(td[{indexer}])[{XpathProvider.TextMatch(key)} or *[{XpathProvider.TextMatch(key)}] or */*[{XpathProvider.TextMatch(key)}] or *[@value = {key.XpathEncode()}]]]";
                 var xpath = $"{rowMatch}/preceding-sibling::tr";
                 var count = Driver.FindElements(By.XPath(xpath)).Count() + 1;
                 

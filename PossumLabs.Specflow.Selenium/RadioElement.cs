@@ -11,7 +11,7 @@ namespace PossumLabs.Specflow.Selenium
     {
         private Dictionary<string, IWebElement> Options { get; }
 
-        public RadioElement(ReadOnlyCollection<IWebElement> elements, IWebDriver driver): base(elements.First(), driver)
+        public RadioElement(IEnumerable<IWebElement> elements, IWebDriver driver): base(elements.First(), driver)
         {
             Options = new Dictionary<string, IWebElement>();
             foreach(var e in elements)
