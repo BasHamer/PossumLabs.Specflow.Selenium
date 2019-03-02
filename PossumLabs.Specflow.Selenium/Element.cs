@@ -9,6 +9,7 @@ using System.Drawing;
 using PossumLabs.Specflow.Core;
 using OpenQA.Selenium.Interactions;
 using System.Text.RegularExpressions;
+using System.Threading;
 
 namespace PossumLabs.Specflow.Selenium
 {
@@ -50,7 +51,16 @@ namespace PossumLabs.Specflow.Selenium
             }
             catch { }
             if (string.IsNullOrWhiteSpace(text))
+            {
+                if (!Equivalent(WebElement.GetAttribute("value"), text))
+                {
+                    WebElement.Clear();
+                    Thread.Sleep(1000);
+                    if (!Equivalent(WebElement.GetAttribute("value"), text))
+                        throw new Exception($"failed clear element, was left with '{WebElement.GetAttribute("value")}'");
+                }
                 return;
+            }
             try
             {
                 //TODO: v2 Check Boxes
@@ -81,8 +91,12 @@ namespace PossumLabs.Specflow.Selenium
             catch { }
             WebElement.Click(); //Works with date time elements require formatting
             WebElement.SendKeys(text);
-            if (Equivalent(WebElement.GetAttribute("value"), text))
-                throw new Exception($"failed setting element, desired '{text}' got '{WebElement.GetAttribute("value")}'");
+            if (!Equivalent(WebElement.GetAttribute("value"), text))
+            {
+                Thread.Sleep(1000);
+                if (!Equivalent(WebElement.GetAttribute("value"), text))
+                    throw new Exception($"failed setting element, desired '{text}' got '{WebElement.GetAttribute("value")}'");
+            }
         }
 
         protected bool Equivalent(string a, string b)
