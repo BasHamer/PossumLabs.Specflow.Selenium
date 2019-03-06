@@ -183,9 +183,16 @@ namespace PossumLabs.Specflow.Selenium.Selectors
                 prefixes.CrossMultiply().ParallelFirstOrException(prefix =>
                 {
                     var elements = driver.FindElements(By.XPath($"{prefix}//label[@for and {XpathProvider.TextMatch(target)}]"));
-                    if (elements.Any())
+                    if (elements.One())
                         return elements.SelectMany(e => driver.FindElements(By.Id(e.GetAttribute("for"))))
                         .Select(e => ElementFactory.Create(driver, e));
+                    if (elements.Many())
+                    {
+                        var visible = elements.Where(e => e.Displayed);
+                        if (visible.One())
+                            return visible.SelectMany(e => driver.FindElements(By.Id(e.GetAttribute("for"))))
+                                .Select(e => ElementFactory.Create(driver, e));
+                    }
                     return new Element[] { };
                 },
                result => result.Any()

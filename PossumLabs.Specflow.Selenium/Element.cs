@@ -91,7 +91,7 @@ namespace PossumLabs.Specflow.Selenium
             catch { }
             WebElement.Click(); //Works with date time elements require formatting
             WebElement.SendKeys(text);
-            if (!Equivalent(WebElement.GetAttribute("value"), text))
+            if (!Equivalent(WebElement.GetAttribute("value"), text) && WebElement.GetAttribute("type") != "file")
             {
                 Thread.Sleep(1000);
                 if (!Equivalent(WebElement.GetAttribute("value"), text))
@@ -99,14 +99,19 @@ namespace PossumLabs.Specflow.Selenium
             }
         }
 
-        protected bool Equivalent(string a, string b)
+        protected bool Equivalent(string actual, string desired)
         {
-            Regex rgx = new Regex("[^a-zA-Z0-9 -]");
-            return rgx.Replace(a, "").ToUpper() == rgx.Replace(b,"").ToUpper();
+            if (string.IsNullOrWhiteSpace(actual) && string.IsNullOrWhiteSpace(desired))
+                return true;
+            Regex rgx = new Regex("[^a-zA-Z0-9]");
+            if (string.IsNullOrWhiteSpace(rgx.Replace(actual, "")) && string.IsNullOrWhiteSpace(desired))
+                return true;
+            return rgx.Replace(actual, "").ToUpper() == rgx.Replace(desired,"").ToUpper();
         }
 
         public void Click()
             => WebElement.Click();
+
 
         public string GetCssValue(string prop)
             => WebElement.GetCssValue(prop);

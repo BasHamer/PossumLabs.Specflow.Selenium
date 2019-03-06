@@ -33,7 +33,7 @@ namespace PossumLabs.Specflow.Selenium
                     var results = elements.Select(e => column.Value.Predicate(e));
                     if (results.Any(result=>result == null))
                         return null;
-                    return results.Distinct().LogFormat();
+                    return $"for row {rowValidation.First().Value.Text} and column {column.Key} {results.Distinct().LogFormat()}";
                 }
             }
 
