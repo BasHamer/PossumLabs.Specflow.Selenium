@@ -52,8 +52,8 @@ namespace PossumLabs.Specflow.Selenium
                         count = Driver.FindElements(By.XPath(xpath)).Count() + 1;
                         rowMatch = $"{Prefix}/tr[(td[{indexer}])[{XpathProvider.TextMatch(key)} or *[{XpathProvider.TextMatch(key)}] or */*[{XpathProvider.TextMatch(key)}] or *[@value = {key.XpathEncode()}]]]";
 
-                        rows = Driver.FindElements(By.XPath(rowMatch));
-                        if (rows.One())
+                        var r = Driver.FindElements(By.XPath(rowMatch));
+                        if (r.One())
                             return count;
                     }
                     throw new Exception($"Unable to uniquely identify the row id '{key}', found {rows.Count()} rows that matched it");
