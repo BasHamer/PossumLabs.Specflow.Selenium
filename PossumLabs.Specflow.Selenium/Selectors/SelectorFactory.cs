@@ -261,7 +261,7 @@ namespace PossumLabs.Specflow.Selenium.Selectors
                                 var ids = e.GetAttribute("aria-labelledby").Split(' ').Select(s => s.Trim()).Where(s => !String.IsNullOrEmpty(s));
                                 var labels = ids.SelectMany(id => driver.FindElements(By.Id(id))).Select(l => l.Text);
                                 var t = target;
-                                foreach (var l in labels)
+                                foreach (var l in labels.Where(s=>!string.IsNullOrWhiteSpace(s)))
                                     t = t.Replace(l, string.Empty);
                                 return string.IsNullOrWhiteSpace(t);
                             }).Select(e => ElementFactory.Create(driver, e));

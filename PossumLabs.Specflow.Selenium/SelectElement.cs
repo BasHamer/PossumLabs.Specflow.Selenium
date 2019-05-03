@@ -57,7 +57,7 @@ namespace PossumLabs.Specflow.Selenium
 
                     try
                     {
-                        OldStyleSelect.SelectByText(text.ToUpper());
+                        OldStyleSelect.SelectByValue(text);
                         return;
                     }
                     catch { }

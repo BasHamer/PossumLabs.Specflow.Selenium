@@ -53,6 +53,9 @@ namespace PossumLabs.Specflow.Selenium
             // https://stackoverflow.com/questions/22322596/selenium-error-the-http-request-to-the-remote-webdriver-timed-out-after-60-sec?utm_medium=organic&utm_source=google_rich_qa&utm_campaign=google_rich_qa
             options.AddArgument("no-sandbox"); //might be a fix :/
             options.AddArgument("disable-popup-blocking");
+            options.AddArgument("disable-gpu");
+            options.AddArgument("disable-extensions");
+            options.AddArgument("disable-dev-shm-usage");
             //TODO: Config value
             var driver = new RemoteWebDriver(new Uri(SeleniumGridConfiguration.Url), options.ToCapabilities(), TimeSpan.FromSeconds(180));
             //do not change this, the site is a bloody nightmare with overlaying buttons etc.

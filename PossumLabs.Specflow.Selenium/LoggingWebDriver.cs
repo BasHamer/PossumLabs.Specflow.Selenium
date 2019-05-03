@@ -233,5 +233,30 @@ for (var i=0 ; i<nodesSnapshot.snapshotLength; i++ )
 
         public void ResetInputState()
         => ActionExecutor.ResetInputState();
+
+        public void ScriptClear(string id)
+        {
+            var jsDriver = Driver as IJavaScriptExecutor;
+            jsDriver.ExecuteScript(@"
+try{
+    var i = $('#" + id + @"').val('');
+
+    if(typeof i.update === 'function') {
+        i.update();
+    } 
+
+    for(var n in i) {
+      if(typeof i[n] === 'function') {
+        continue;
+      }
+      if(typeof i[n].update === 'function') {
+        i[n].update();
+      }
+    }
+}
+catch(err) {
+}");
+        }
+
     }
 }

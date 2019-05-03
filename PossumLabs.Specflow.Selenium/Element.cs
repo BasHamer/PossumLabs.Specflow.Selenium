@@ -43,6 +43,7 @@ namespace PossumLabs.Specflow.Selenium
 
         //https://www.grazitti.com/resources/articles/automating-different-input-fields-using-selenium-webdriver/
 
+  
         public virtual void Enter(string text)
         {
             try
@@ -54,8 +55,8 @@ namespace PossumLabs.Specflow.Selenium
             {
                 if (!Equivalent(WebElement.GetAttribute("value"), text))
                 {
-                    WebElement.Clear();
-                    Thread.Sleep(1000);
+                    ScriptClear();
+                    Thread.Sleep(100);
                     if (!Equivalent(WebElement.GetAttribute("value"), text))
                         throw new Exception($"failed clear element, was left with '{WebElement.GetAttribute("value")}'");
                 }
@@ -64,6 +65,8 @@ namespace PossumLabs.Specflow.Selenium
             try
             {
                 //TODO: v2 Check Boxes
+                WebElement.Click();
+                Thread.Sleep(100);
                 WebElement.SendKeys(text);
                 if (Equivalent(WebElement.GetAttribute("value"), text))
                     return;
@@ -90,13 +93,23 @@ namespace PossumLabs.Specflow.Selenium
             }
             catch { }
             WebElement.Click(); //Works with date time elements require formatting
-            WebElement.SendKeys(text);
+            Thread.Sleep(100);
+            foreach (var key in text)
+            {
+                Thread.Sleep(10);
+                WebElement.SendKeys(key.ToString());
+            }
             if (!Equivalent(WebElement.GetAttribute("value"), text) && WebElement.GetAttribute("type") != "file")
             {
                 Thread.Sleep(1000);
                 if (!Equivalent(WebElement.GetAttribute("value"), text))
                     throw new Exception($"failed setting element, desired '{text}' got '{WebElement.GetAttribute("value")}'");
             }
+        }
+
+        public void ScriptClear()
+        {
+            ((LoggingWebDriver)WebDriver).ScriptClear(Id);
         }
 
         protected bool Equivalent(string actual, string desired)
