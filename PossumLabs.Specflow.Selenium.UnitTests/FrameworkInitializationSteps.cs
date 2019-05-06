@@ -1,6 +1,7 @@
 ﻿using BoDi;
 using FluentAssertions;
 using Microsoft.Extensions.Configuration;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OpenQA.Selenium;
 using PossumLabs.Specflow.Core;
 using PossumLabs.Specflow.Core.Configuration;
@@ -31,6 +32,13 @@ namespace PossumLabs.Specflow.Selenium.UnitTests
         private ScreenshotProcessor ScreenshotProcessor { get; set; }
         private ImageLogging ImageLogging { get; set; }
         private MovieLogger MovieLogger { get; set; }
+
+        [BeforeScenario(Order = int.MinValue)]
+        public void SkipWhenNoSelenium()
+        {
+            if (Environment.GetEnvironmentVariable("NO_SELENIUM") == "true")
+                Assert.Inconclusive("NO_SELENIUM");
+        }
 
         [BeforeScenario(Order = int.MinValue + 1)]
         public void Setup()
