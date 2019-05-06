@@ -25,7 +25,7 @@ namespace PossumLabs.Specflow.Selenium.UnitTests.Features
         
         private Microsoft.VisualStudio.TestTools.UnitTesting.TestContext _testContext;
         
-#line 1 "Selector.feature"
+#line 1 "ActiveElement.feature"
 #line hidden
         
         public virtual Microsoft.VisualStudio.TestTools.UnitTesting.TestContext TestContext
@@ -96,12 +96,12 @@ namespace PossumLabs.Specflow.Selenium.UnitTests.Features
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
 #line hidden
-            TechTalk.SpecFlow.Table table11 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table1 = new TechTalk.SpecFlow.Table(new string[] {
                         "Html"});
-            table11.AddRow(new string[] {
+            table1.AddRow(new string[] {
                         string.Format("{0}", html)});
 #line 5
- testRunner.Given("injecting browser content", ((string)(null)), table11, "Given ");
+ testRunner.Given("injecting browser content", ((string)(null)), table1, "Given ");
 #line 8
  testRunner.When(string.Format("entering \'{0}\' into element \'{1}\'", value, target), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 9
@@ -257,12 +257,12 @@ this.EnteringTextInputs("textarea aria-labelledby", "t1 t2", "Bob", "<textarea a
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
 #line hidden
-            TechTalk.SpecFlow.Table table12 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table2 = new TechTalk.SpecFlow.Table(new string[] {
                         "Html"});
-            table12.AddRow(new string[] {
+            table2.AddRow(new string[] {
                         string.Format("{0}", html)});
 #line 22
- testRunner.Given("injecting browser content", ((string)(null)), table12, "Given ");
+ testRunner.Given("injecting browser content", ((string)(null)), table2, "Given ");
 #line 25
  testRunner.When(string.Format("entering \'{0}\' into element \'{1}\'", value, target), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 26
@@ -348,12 +348,12 @@ this.EnteringNumberInputs("aria-labelledby", "t1 t2", "42", "<input type=\"numbe
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
 #line hidden
-            TechTalk.SpecFlow.Table table13 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table3 = new TechTalk.SpecFlow.Table(new string[] {
                         "Html"});
-            table13.AddRow(new string[] {
+            table3.AddRow(new string[] {
                         string.Format("{0}", html)});
 #line 35
- testRunner.Given("injecting browser content", ((string)(null)), table13, "Given ");
+ testRunner.Given("injecting browser content", ((string)(null)), table3, "Given ");
 #line 38
  testRunner.When(string.Format("entering \'{0}\' into element \'{1}\'", value, target), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 39
@@ -654,12 +654,12 @@ this.EnteringDropdownInputs("default name", "target", "Bob", "<select name=\"tar
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
 #line hidden
-            TechTalk.SpecFlow.Table table14 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table4 = new TechTalk.SpecFlow.Table(new string[] {
                         "Html"});
-            table14.AddRow(new string[] {
+            table4.AddRow(new string[] {
                         string.Format("{0}", html)});
 #line 59
- testRunner.Given("injecting browser content", ((string)(null)), table14, "Given ");
+ testRunner.Given("injecting browser content", ((string)(null)), table4, "Given ");
 #line 62
  testRunner.When(string.Format("entering \'{0}\' into element \'{1}\'", value, target), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 63
@@ -732,12 +732,12 @@ this.EnteringRadio("label nested", "target", "Bob", "<label>Bob<input type=\"rad
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
 #line hidden
-            TechTalk.SpecFlow.Table table15 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table5 = new TechTalk.SpecFlow.Table(new string[] {
                         "Html"});
-            table15.AddRow(new string[] {
+            table5.AddRow(new string[] {
                         string.Format("{0}", html)});
 #line 71
- testRunner.Given("injecting browser content", ((string)(null)), table15, "Given ");
+ testRunner.Given("injecting browser content", ((string)(null)), table5, "Given ");
 #line 74
  testRunner.When(string.Format("clicking the element \'{0}\'", target), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
@@ -1127,12 +1127,12 @@ this.Clicking("23  div menuitem label", "target", "<div role=\'menuitem\'><label
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
 #line hidden
-            TechTalk.SpecFlow.Table table16 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table6 = new TechTalk.SpecFlow.Table(new string[] {
                         "Html"});
-            table16.AddRow(new string[] {
+            table6.AddRow(new string[] {
                         string.Format("{0}", html)});
 #line 103
- testRunner.Given("injecting browser content", ((string)(null)), table16, "Given ");
+ testRunner.Given("injecting browser content", ((string)(null)), table6, "Given ");
 #line 106
  testRunner.When(string.Format("entering \'{0}\' into element \'{1}\'", value, target), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 107
@@ -1264,36 +1264,36 @@ this.Checkboxes("unchecking  checked", "target", "unchecked", "<label>target<inp
 #line hidden
         }
         
-        public virtual void ErrorMeassages(string description, string target, string value, string html, string error, string[] exampleTags)
+        public virtual void ErrorMessages(string description, string target, string value, string html, string error, string[] exampleTags)
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("error meassages", null, exampleTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("error messages", null, exampleTags);
 #line 119
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
 #line hidden
-            TechTalk.SpecFlow.Table table17 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table7 = new TechTalk.SpecFlow.Table(new string[] {
                         "Html"});
-            table17.AddRow(new string[] {
+            table7.AddRow(new string[] {
                         string.Format("{0}", html)});
 #line 120
- testRunner.Given("injecting browser content", ((string)(null)), table17, "Given ");
+ testRunner.Given("injecting browser content", ((string)(null)), table7, "Given ");
 #line 123
  testRunner.Given("an error is expected", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 124
  testRunner.When(string.Format("entering \'{0}\' into element \'{1}\'", value, target), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-            TechTalk.SpecFlow.Table table18 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table8 = new TechTalk.SpecFlow.Table(new string[] {
                         "Message"});
-            table18.AddRow(new string[] {
+            table8.AddRow(new string[] {
                         string.Format("{0}", error)});
 #line 125
- testRunner.Then("the Error has values", ((string)(null)), table18, "Then ");
+ testRunner.Then("the Error has values", ((string)(null)), table8, "Then ");
 #line hidden
             this.ScenarioCleanup();
         }
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("error meassages: value")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("error messages: value")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Selectors")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("SingleBrowser")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("injected-html")]
@@ -1304,10 +1304,10 @@ this.ScenarioInitialize(scenarioInfo);
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:html", "<input type=\"checkbox\" id=\"i1\" name=\"t\" value=\"Bob\"></input><label for=\"i1\">noop<" +
             "/label>")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:error", "/element was not found/")]
-        public virtual void ErrorMeassages_Value()
+        public virtual void ErrorMessages_Value()
         {
 #line 119
-this.ErrorMeassages("value", "target", "checked", "<input type=\"checkbox\" id=\"i1\" name=\"t\" value=\"Bob\"></input><label for=\"i1\">noop<" +
+this.ErrorMessages("value", "target", "checked", "<input type=\"checkbox\" id=\"i1\" name=\"t\" value=\"Bob\"></input><label for=\"i1\">noop<" +
                     "/label>", "/element was not found/", ((string[])(null)));
 #line hidden
         }

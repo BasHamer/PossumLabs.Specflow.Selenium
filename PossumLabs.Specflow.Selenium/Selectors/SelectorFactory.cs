@@ -90,12 +90,12 @@ namespace PossumLabs.Specflow.Selenium.Selectors
                     new List<Func<string, IEnumerable<SelectorPrefix>, IWebDriver, IEnumerable<Element>>>
                     {
                         ByForAttribute,
-                        ByNestedInLabel(XpathProvider. SelectableElements  ),
-                        ByNested(XpathProvider. SelectableElements  ),
-                        ByText(XpathProvider. SelectableElements  ),
+                        ByNestedInLabel(XpathProvider.CheckableElements  ),
+                        ByNested(XpathProvider.CheckableElements  ),
+                        ByText(XpathProvider.CheckableElements  ),
                         ByLabelledBy,
-                        ByFollowingMarker(XpathProvider. SelectableElements  ),
-                        ByCellBelow(XpathProvider. SelectableElements  ),
+                        ByFollowingMarker(XpathProvider.CheckableElements  ),
+                        ByCellBelow(XpathProvider.CheckableElements  ),
                     }
                 },
             };

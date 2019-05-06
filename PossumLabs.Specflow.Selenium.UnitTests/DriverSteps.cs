@@ -12,14 +12,33 @@ namespace PossumLabs.Specflow.Selenium.UnitTests
         public DriverSteps(IObjectContainer objectContainer) : base(objectContainer)
         { }
 
+        //selectors
         [StepArgumentTransformation]
-        public ActiveElementSelector TransformSelector(string Constructor)
+        public ActiveElementSelector TransformActiveElementSelector(string Constructor)
             => SelectorFactory.CreateSelector<ActiveElementSelector>(Interpeter.Get<string>(Constructor));
 
         [StepArgumentTransformation]
         public ContentSelector TransformContentSelector(string Constructor)
             => SelectorFactory.CreateSelector<ContentSelector>(Interpeter.Get<string>(Constructor));
 
+        [StepArgumentTransformation]
+        public CheckableElementSelector TransformCheckableElementSelector(string Constructor)
+            => SelectorFactory.CreateSelector<CheckableElementSelector>(Interpeter.Get<string>(Constructor));
+
+        [StepArgumentTransformation]
+        public ClickableElementSelector TransformClickableElementSelector(string Constructor)
+            => SelectorFactory.CreateSelector<ClickableElementSelector>(Interpeter.Get<string>(Constructor));
+
+        [StepArgumentTransformation]
+        public SelectableElementSelector TransformSelectableElementSelectorr(string Constructor)
+            => SelectorFactory.CreateSelector<SelectableElementSelector>(Interpeter.Get<string>(Constructor));
+
+        [StepArgumentTransformation]
+        public SettableElementSelector TransformSettableElementSelector(string Constructor)
+            => SelectorFactory.CreateSelector<SettableElementSelector>(Interpeter.Get<string>(Constructor));
+
+
+        //prefixes
         [StepArgumentTransformation]
         public UnderSelectorPrefix TransformUnderSearcherPrefix(string Constructor)
             => SelectorFactory.CreatePrefix<UnderSelectorPrefix>(Interpeter.Get<string>(Constructor));
@@ -36,11 +55,15 @@ namespace PossumLabs.Specflow.Selenium.UnitTests
         public ErrorSelectorPrefix TransformErrorSearcherPrefix(string Constructor)
             => SelectorFactory.CreatePrefix<ErrorSelectorPrefix>(Interpeter.Get<string>(Constructor));
 
+
+
         [AfterStep]
         public void Cleanup()
         {
             if (WebDriverManager.IsInitialized && WebDriver != null) WebDriver.LeaveFrames();
         }
+
+
 
         [When(@"clicking the element '(.*)'")]
         public void WhenClickingTheElement(ActiveElementSelector selector)
@@ -96,5 +119,26 @@ namespace PossumLabs.Specflow.Selenium.UnitTests
         public void GivenNavigatedTo(string page)
             => Executor.Execute(()
             => WebDriver.NavigateTo(page));
+
+
+        [When(@"selecting '(.*)' for element '(.*)'")]
+        public void WhenSelectingForElement(ResolvedString text, SelectableElementSelector selector)
+            => Executor.Execute(()
+            => WebDriver.Select(selector).Enter(text));
+
+        [When(@"setting '(.*)' for element '(.*)'")]
+        public void WhenSettingTheElement(ResolvedString text, SettableElementSelector selector)
+            => Executor.Execute(()
+            => WebDriver.Select(selector).Enter(text));
+
+        [When(@"checking element '(.*)'")]
+        public void WhenCheckingElement(CheckableElementSelector selector)
+            => Executor.Execute(()
+            => WebDriver.Select(selector).Enter("checked"));
+
+        [When(@"unchecking element '(.*)'")]
+        public void WhenUncheckingElement(CheckableElementSelector selector)
+           => Executor.Execute(()
+           => WebDriver.Select(selector).Enter("unchecked"));
     }
 }

@@ -116,7 +116,7 @@ Examples:
 	| unchecking  checked | target | unchecked | <label>target<input type="checkbox" checked></input></label>                                  |
 
 
-Scenario Outline: error meassages
+Scenario Outline: error messages
 	Given injecting browser content
 	| Html   |
 	| <html> |
