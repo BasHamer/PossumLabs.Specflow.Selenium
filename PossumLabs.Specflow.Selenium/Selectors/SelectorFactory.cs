@@ -71,7 +71,33 @@ namespace PossumLabs.Specflow.Selenium.Selectors
                         ByContentSelfForRow,
                         ByContent
                     }
-                }
+                },
+                {
+                    SelectorNames.Selectable  ,
+                    new List<Func<string, IEnumerable<SelectorPrefix>, IWebDriver, IEnumerable<Element>>>
+                    {
+                        ByForAttribute,
+                        ByNestedInLabel(XpathProvider. SelectableElements  ),
+                        ByNested(XpathProvider. SelectableElements  ),
+                        ByText(XpathProvider. SelectableElements  ),
+                        ByLabelledBy,
+                        ByFollowingMarker(XpathProvider. SelectableElements  ),
+                        ByCellBelow(XpathProvider. SelectableElements  ),
+                    }
+                },
+                {
+                    SelectorNames.Checkable  ,
+                    new List<Func<string, IEnumerable<SelectorPrefix>, IWebDriver, IEnumerable<Element>>>
+                    {
+                        ByForAttribute,
+                        ByNestedInLabel(XpathProvider. SelectableElements  ),
+                        ByNested(XpathProvider. SelectableElements  ),
+                        ByText(XpathProvider. SelectableElements  ),
+                        ByLabelledBy,
+                        ByFollowingMarker(XpathProvider. SelectableElements  ),
+                        ByCellBelow(XpathProvider. SelectableElements  ),
+                    }
+                },
             };
 
             Prefixes = new Dictionary<string, List<Func<string, IEnumerable<string>>>>

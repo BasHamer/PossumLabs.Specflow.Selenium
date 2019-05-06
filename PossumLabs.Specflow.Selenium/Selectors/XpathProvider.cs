@@ -45,5 +45,11 @@ namespace PossumLabs.Specflow.Selenium.Selectors
         virtual public string ClickableElements
           => "(not(@type='hidden') and ( self::a or self::button or self::input or @role='button' or @role='link' or @role='menuitem' ))";
 
+        virtual public string SelectableElements
+          => "(not(@type='hidden') and ((self::input and @list  ) or self::select ))";
+
+        virtual public string CheckableElements
+          => "(not(@type='hidden') and ((self::input and @type='checkbox'  ) or self::checkbox ))";
+
     }
 }
