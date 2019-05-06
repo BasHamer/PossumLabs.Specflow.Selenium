@@ -96,30 +96,30 @@ namespace PossumLabs.Specflow.Selenium.UnitTests.Features
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
 #line hidden
-            TechTalk.SpecFlow.Table table33 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table35 = new TechTalk.SpecFlow.Table(new string[] {
                         "Table"});
-            table33.AddRow(new string[] {
+            table35.AddRow(new string[] {
                         string.Format("{0}", table)});
 #line 5
- testRunner.Given("injecting browser content", ((string)(null)), table33, "Given ");
+ testRunner.Given("injecting browser content", ((string)(null)), table35, "Given ");
 #line hidden
-            TechTalk.SpecFlow.Table table34 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table36 = new TechTalk.SpecFlow.Table(new string[] {
                         "",
                         "Col1"});
-            table34.AddRow(new string[] {
+            table36.AddRow(new string[] {
                         string.Format("{0}", target),
                         string.Format("{0}", value)});
 #line 8
- testRunner.When("entering into Table", ((string)(null)), table34, "When ");
+ testRunner.When("entering into Table", ((string)(null)), table36, "When ");
 #line hidden
-            TechTalk.SpecFlow.Table table35 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table37 = new TechTalk.SpecFlow.Table(new string[] {
                         "",
                         "Col1"});
-            table35.AddRow(new string[] {
+            table37.AddRow(new string[] {
                         string.Format("{0}", target),
                         string.Format("{0}", value)});
 #line 11
- testRunner.Then("the Table has values", ((string)(null)), table35, "Then ");
+ testRunner.Then("the Table has values", ((string)(null)), table37, "Then ");
 #line hidden
             this.ScenarioCleanup();
         }
@@ -169,30 +169,30 @@ this.EnteringDataIntoTable("td simple text input", "target", "Bob", "<tr><td>Key
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
 #line hidden
-            TechTalk.SpecFlow.Table table36 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table38 = new TechTalk.SpecFlow.Table(new string[] {
                         "Table"});
-            table36.AddRow(new string[] {
+            table38.AddRow(new string[] {
                         string.Format("{0}", table)});
 #line 20
- testRunner.Given("injecting browser content", ((string)(null)), table36, "Given ");
+ testRunner.Given("injecting browser content", ((string)(null)), table38, "Given ");
 #line hidden
-            TechTalk.SpecFlow.Table table37 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table39 = new TechTalk.SpecFlow.Table(new string[] {
                         "Key",
                         "Col1"});
-            table37.AddRow(new string[] {
+            table39.AddRow(new string[] {
                         string.Format("{0}", target),
                         string.Format("{0}", value)});
 #line 23
- testRunner.When("entering into Table", ((string)(null)), table37, "When ");
+ testRunner.When("entering into Table", ((string)(null)), table39, "When ");
 #line hidden
-            TechTalk.SpecFlow.Table table38 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table40 = new TechTalk.SpecFlow.Table(new string[] {
                         "Key",
                         "Col1"});
-            table38.AddRow(new string[] {
+            table40.AddRow(new string[] {
                         string.Format("{0}", target),
                         string.Format("{0}", value)});
 #line 26
- testRunner.Then("the Table has values", ((string)(null)), table38, "Then ");
+ testRunner.Then("the Table has values", ((string)(null)), table40, "Then ");
 #line hidden
             this.ScenarioCleanup();
         }
@@ -247,40 +247,40 @@ this.FindingPropperCellsInTables("th noise text input", "target", "Bob", "<tr><t
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
 #line hidden
-            TechTalk.SpecFlow.Table table39 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table41 = new TechTalk.SpecFlow.Table(new string[] {
                         "Table"});
-            table39.AddRow(new string[] {
+            table41.AddRow(new string[] {
                         "<tr><th>Key</th><th>Col1</th></tr><tr><td>target</td><td><input type=\"text\"/></td" +
                             "></tr>"});
 #line 35
- testRunner.Given("injecting browser content", ((string)(null)), table39, "Given ");
+ testRunner.Given("injecting browser content", ((string)(null)), table41, "Given ");
 #line hidden
-            TechTalk.SpecFlow.Table table40 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table42 = new TechTalk.SpecFlow.Table(new string[] {
                         "Key",
                         "Col1"});
-            table40.AddRow(new string[] {
+            table42.AddRow(new string[] {
                         "target",
                         "Bob"});
 #line 38
- testRunner.When("entering into Table", ((string)(null)), table40, "When ");
+ testRunner.When("entering into Table", ((string)(null)), table42, "When ");
 #line 41
  testRunner.Given("an error is expected", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-            TechTalk.SpecFlow.Table table41 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table43 = new TechTalk.SpecFlow.Table(new string[] {
                         "Key",
                         "Col1"});
-            table41.AddRow(new string[] {
+            table43.AddRow(new string[] {
                         "target",
                         "Marry"});
 #line 42
- testRunner.Then("the Table has values", ((string)(null)), table41, "Then ");
+ testRunner.Then("the Table has values", ((string)(null)), table43, "Then ");
 #line hidden
-            TechTalk.SpecFlow.Table table42 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table44 = new TechTalk.SpecFlow.Table(new string[] {
                         "Message"});
-            table42.AddRow(new string[] {
+            table44.AddRow(new string[] {
                         "/the value was \'Bob\' wich was not \'Marry\'/"});
 #line 45
- testRunner.Then("the Error has values", ((string)(null)), table42, "Then ");
+ testRunner.Then("the Error has values", ((string)(null)), table44, "Then ");
 #line hidden
             this.ScenarioCleanup();
         }

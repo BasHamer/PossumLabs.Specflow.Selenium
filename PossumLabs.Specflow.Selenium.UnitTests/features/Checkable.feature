@@ -25,15 +25,29 @@ Examples:
 	| description         | target | value     | html                                                         |
 	| unchecking          | target | unchecked | <label>target<input type="checkbox"></input></label>         |
 	| unchecking  checked | target | unchecked | <label>target<input type="checkbox" checked></input></label> |
-Scenario Outline: error messages
+
+Scenario Outline: error messages checking
 	Given injecting browser content
 	| Html   |
 	| <html> |
 	Given an error is expected
-	When entering '<value>' into element '<target>'
+	When checking element '<target>'
 	Then the Error has values
     | Message |
     | <error> |
 Examples: 
-	| description | target | value   | html                                                                                     | error                   |
-	| value       | target | checked | <input type="checkbox" id="i1" name="t" value="Bob"></input><label for="i1">noop</label> | /element was not found/ |
+	| description | target | value   | html                         | error                   |
+	| value       | target | checked | <label>target<input></label> | /element was not found/ |
+
+	Scenario Outline: error messages unchecking
+	Given injecting browser content
+	| Html   |
+	| <html> |
+	Given an error is expected
+	When unchecking element '<target>'
+	Then the Error has values
+    | Message |
+    | <error> |
+Examples: 
+	| description | target | value   | html                         | error                   |
+	| value       | target | checked | <label>targe<input>t</label> | /element was not found/ |

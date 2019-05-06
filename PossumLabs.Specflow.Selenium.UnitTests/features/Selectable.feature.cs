@@ -94,12 +94,12 @@ namespace PossumLabs.Specflow.Selenium.UnitTests.Features
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
 #line hidden
-            TechTalk.SpecFlow.Table table23 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table25 = new TechTalk.SpecFlow.Table(new string[] {
                         "Html"});
-            table23.AddRow(new string[] {
+            table25.AddRow(new string[] {
                         string.Format("{0}", html)});
 #line 4
- testRunner.Given("injecting browser content", ((string)(null)), table23, "Given ");
+ testRunner.Given("injecting browser content", ((string)(null)), table25, "Given ");
 #line 7
  testRunner.When(string.Format("selecting \'{0}\' for element \'{1}\'", value, target), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 8
@@ -363,49 +363,47 @@ this.SelectingInputs("default name", "target", "Bob", "<select name=\"target\"><
 #line hidden
         }
         
-        public virtual void ErrorMessages(string description, string target, string value, string html, string error, string[] exampleTags)
+        public virtual void ErrorMessagesSelecting(string description, string target, string value, string html, string error, string[] exampleTags)
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("error messages", null, exampleTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("error messages selecting", null, exampleTags);
 #line 27
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
 #line hidden
-            TechTalk.SpecFlow.Table table24 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table26 = new TechTalk.SpecFlow.Table(new string[] {
                         "Html"});
-            table24.AddRow(new string[] {
+            table26.AddRow(new string[] {
                         string.Format("{0}", html)});
 #line 28
- testRunner.Given("injecting browser content", ((string)(null)), table24, "Given ");
+ testRunner.Given("injecting browser content", ((string)(null)), table26, "Given ");
 #line 31
  testRunner.Given("an error is expected", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 32
- testRunner.When(string.Format("entering \'{0}\' into element \'{1}\'", value, target), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.When(string.Format("selecting \'{0}\' for element \'{1}\'", value, target), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-            TechTalk.SpecFlow.Table table25 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table27 = new TechTalk.SpecFlow.Table(new string[] {
                         "Message"});
-            table25.AddRow(new string[] {
+            table27.AddRow(new string[] {
                         string.Format("{0}", error)});
 #line 33
- testRunner.Then("the Error has values", ((string)(null)), table25, "Then ");
+ testRunner.Then("the Error has values", ((string)(null)), table27, "Then ");
 #line hidden
             this.ScenarioCleanup();
         }
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("error messages: value")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("error messages selecting: value")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Selectable selector")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "value")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:description", "value")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:target", "target")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:value", "checked")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:html", "<input type=\"checkbox\" id=\"i1\" name=\"t\" value=\"Bob\"></input><label for=\"i1\">noop<" +
-            "/label>")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:value", "bob")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:html", "<label>target<input></label>")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:error", "/element was not found/")]
-        public virtual void ErrorMessages_Value()
+        public virtual void ErrorMessagesSelecting_Value()
         {
 #line 27
-this.ErrorMessages("value", "target", "checked", "<input type=\"checkbox\" id=\"i1\" name=\"t\" value=\"Bob\"></input><label for=\"i1\">noop<" +
-                    "/label>", "/element was not found/", ((string[])(null)));
+this.ErrorMessagesSelecting("value", "target", "bob", "<label>target<input></label>", "/element was not found/", ((string[])(null)));
 #line hidden
         }
     }

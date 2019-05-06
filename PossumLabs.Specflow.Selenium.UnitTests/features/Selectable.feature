@@ -24,15 +24,15 @@ Examples:
 	| dl aria-labelledby | t1 t2  | Bob   | <input aria-labelledby= "l1 l2" list="o"><datalist id="o"><option value="bad"><option value="Bob"></datalist><label id="l1">t1</label><label id="l2">t2</label> |
 	| default name       | target | Bob   | <select name="target"><option value="" groupname displayorder="-1"></option><option value="bad">Bad</option><option value="Bob">test</option></select>          |
 
-Scenario Outline: error messages
+Scenario Outline: error messages selecting
 	Given injecting browser content
 	| Html   |
 	| <html> |
 	Given an error is expected
-	When entering '<value>' into element '<target>'
+	When selecting '<value>' for element '<target>'
 	Then the Error has values
     | Message |
     | <error> |
 Examples: 
-	| description | target | value   | html                                                                                     | error                   |
-	| value       | target | checked | <input type="checkbox" id="i1" name="t" value="Bob"></input><label for="i1">noop</label> | /element was not found/ |
+	| description | target | value   | html                         | error                   |
+	| value       | target | bob     | <label>target<input></label> | /element was not found/ |

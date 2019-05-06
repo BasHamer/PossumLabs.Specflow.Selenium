@@ -96,12 +96,12 @@ namespace PossumLabs.Specflow.Selenium.UnitTests.Features
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
 #line hidden
-            TechTalk.SpecFlow.Table table21 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table23 = new TechTalk.SpecFlow.Table(new string[] {
                         "TableRow"});
-            table21.AddRow(new string[] {
+            table23.AddRow(new string[] {
                         string.Format("{0}", html)});
 #line 5
- testRunner.Given("injecting browser content", ((string)(null)), table21, "Given ");
+ testRunner.Given("injecting browser content", ((string)(null)), table23, "Given ");
 #line 8
  testRunner.When(string.Format("for row \'{0}\' entering \'{1}\' into element \'{2}\'", row, value, target), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 9
@@ -321,12 +321,12 @@ this.TableRow("11 span", "row1", "target", "Bob", "<td><span>row1</span><td><td>
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
 #line hidden
-            TechTalk.SpecFlow.Table table22 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table24 = new TechTalk.SpecFlow.Table(new string[] {
                         "Html"});
-            table22.AddRow(new string[] {
+            table24.AddRow(new string[] {
                         string.Format("{0}", html)});
 #line 26
- testRunner.Given("injecting browser content", ((string)(null)), table22, "Given ");
+ testRunner.Given("injecting browser content", ((string)(null)), table24, "Given ");
 #line 29
  testRunner.When(string.Format("for row \'{0}\' entering \'{1}\' into element \'{2}\'", row, value, target), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 30
