@@ -22,11 +22,15 @@ namespace PossumLabs.Specflow.Selenium.Configuration
             RetryMs = retry;
             Width = int.Parse(config["seleniumWidth"]??"1280");
             Height = int.Parse(config["seleniumHeight"]??"720");
+            Username = config["seleniumGridUsername"];
+            AccessKey = config["seleniumGridAccessKey"];
         }
 
         public string Url { get; }
         public int RetryMs { get; }
-        public int Width { get; internal set; }
-        public int Height { get; internal set; }
+        public int Width { get; set; }
+        public int Height { get; set; }
+        public string Username { get; set; }
+        public string AccessKey { get; set; }
     }
 }

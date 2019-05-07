@@ -1,6 +1,7 @@
 ﻿@SingleBrowser @injected-html
 Feature: IFrames
 
+@ignore @bug
 Scenario Outline: Under 
 	Given injecting browser content
 	| iframe |
@@ -12,6 +13,7 @@ Scenario Outline: Under
 	| description | under        | target       | value | html                                                                          |
 	| 01 simple   | under-target | input-target | Bob   | <div>under-target<label>input-target<input type="text"></input></label></div> |
 
+@ignore @bug
 Scenario Outline: table row
 	Given injecting browser content
 	| iframe |

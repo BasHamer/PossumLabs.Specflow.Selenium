@@ -91,8 +91,15 @@ namespace PossumLabs.Specflow.Selenium.UnitTests.Features
         
         public virtual void Under(string description, string under, string target, string value, string html, string[] exampleTags)
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Under", null, exampleTags);
-#line 4
+            string[] @__tags = new string[] {
+                    "ignore",
+                    "bug"};
+            if ((exampleTags != null))
+            {
+                @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
+            }
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Under", null, @__tags);
+#line 5
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
 #line hidden
@@ -100,11 +107,11 @@ this.ScenarioInitialize(scenarioInfo);
                         "iframe"});
             table16.AddRow(new string[] {
                         string.Format("{0}", html)});
-#line 5
+#line 6
  testRunner.Given("injecting browser content", ((string)(null)), table16, "Given ");
-#line 8
- testRunner.When(string.Format("under \'{0}\' entering \'{1}\' into element \'{2}\'", under, value, target), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 9
+ testRunner.When(string.Format("under \'{0}\' entering \'{1}\' into element \'{2}\'", under, value, target), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 10
  testRunner.Then(string.Format("under \'{0}\' the element \'{1}\' has the value \'{2}\'", under, target, value), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -115,6 +122,8 @@ this.ScenarioInitialize(scenarioInfo);
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "IFrames")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("SingleBrowser")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("injected-html")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.IgnoreAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("bug")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "01 simple")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:description", "01 simple")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:under", "under-target")]
@@ -123,15 +132,22 @@ this.ScenarioInitialize(scenarioInfo);
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:html", "<div>under-target<label>input-target<input type=\"text\"></input></label></div>")]
         public virtual void Under_01Simple()
         {
-#line 4
+#line 5
 this.Under("01 simple", "under-target", "input-target", "Bob", "<div>under-target<label>input-target<input type=\"text\"></input></label></div>", ((string[])(null)));
 #line hidden
         }
         
         public virtual void TableRow(string description, string row, string target, string value, string html, string[] exampleTags)
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("table row", null, exampleTags);
-#line 15
+            string[] @__tags = new string[] {
+                    "ignore",
+                    "bug"};
+            if ((exampleTags != null))
+            {
+                @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
+            }
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("table row", null, @__tags);
+#line 17
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
 #line hidden
@@ -139,11 +155,11 @@ this.ScenarioInitialize(scenarioInfo);
                         "iframe"});
             table17.AddRow(new string[] {
                         string.Format("{0}", html)});
-#line 16
+#line 18
  testRunner.Given("injecting browser content", ((string)(null)), table17, "Given ");
-#line 19
+#line 21
  testRunner.When(string.Format("for row \'{0}\' entering \'{1}\' into element \'{2}\'", row, value, target), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 20
+#line 22
  testRunner.Then(string.Format("for row \'{0}\' the element \'{1}\' has the value \'{2}\'", row, target, value), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -154,6 +170,8 @@ this.ScenarioInitialize(scenarioInfo);
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "IFrames")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("SingleBrowser")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("injected-html")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.IgnoreAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("bug")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "01 simple")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:description", "01 simple")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:row", "row1")]
@@ -163,7 +181,7 @@ this.ScenarioInitialize(scenarioInfo);
             "/tr></table>")]
         public virtual void TableRow_01Simple()
         {
-#line 15
+#line 17
 this.TableRow("01 simple", "row1", "target", "Bob", "<table><tr><td>row1<td><td><label>target<input type=\"text\"></input></label></td><" +
                     "/tr></table>", ((string[])(null)));
 #line hidden
@@ -172,7 +190,7 @@ this.TableRow("01 simple", "row1", "target", "Bob", "<table><tr><td>row1<td><td>
         public virtual void EnteringTextInputs(string description, string target, string value, string html, string[] exampleTags)
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("entering text inputs", null, exampleTags);
-#line 26
+#line 28
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
 #line hidden
@@ -180,11 +198,11 @@ this.ScenarioInitialize(scenarioInfo);
                         "iframe"});
             table18.AddRow(new string[] {
                         string.Format("{0}", html)});
-#line 27
+#line 29
  testRunner.Given("injecting browser content", ((string)(null)), table18, "Given ");
-#line 30
+#line 32
  testRunner.When(string.Format("entering \'{0}\' into element \'{1}\'", value, target), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 31
+#line 33
  testRunner.Then(string.Format("the element \'{0}\' has the value \'{1}\'", target, value), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -202,7 +220,7 @@ this.ScenarioInitialize(scenarioInfo);
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:html", "<label for=\"linky\">target</label><input id=\"linky\" type=\"text\"></input>")]
         public virtual void EnteringTextInputs_InputFor()
         {
-#line 26
+#line 28
 this.EnteringTextInputs("input for", "target", "Bob", "<label for=\"linky\">target</label><input id=\"linky\" type=\"text\"></input>", ((string[])(null)));
 #line hidden
         }
@@ -210,7 +228,7 @@ this.EnteringTextInputs("input for", "target", "Bob", "<label for=\"linky\">targ
         public virtual void EnteringNumberInputs(string description, string target, string value, string html, string[] exampleTags)
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("entering number inputs", null, exampleTags);
-#line 36
+#line 38
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
 #line hidden
@@ -218,11 +236,11 @@ this.ScenarioInitialize(scenarioInfo);
                         "iframe"});
             table19.AddRow(new string[] {
                         string.Format("{0}", html)});
-#line 37
+#line 39
  testRunner.Given("injecting browser content", ((string)(null)), table19, "Given ");
-#line 40
+#line 42
  testRunner.When(string.Format("entering \'{0}\' into element \'{1}\'", value, target), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 41
+#line 43
  testRunner.Then(string.Format("the element \'{0}\' has the value \'{1}\'", target, value), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -240,7 +258,7 @@ this.ScenarioInitialize(scenarioInfo);
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:html", "<label for=\"linky\">target</label><input id=\"linky\" type=\"number\"></input>")]
         public virtual void EnteringNumberInputs_For()
         {
-#line 36
+#line 38
 this.EnteringNumberInputs("for", "target", "42", "<label for=\"linky\">target</label><input id=\"linky\" type=\"number\"></input>", ((string[])(null)));
 #line hidden
         }
@@ -248,7 +266,7 @@ this.EnteringNumberInputs("for", "target", "42", "<label for=\"linky\">target</l
         public virtual void EnteringDropdownInputs(string description, string target, string value, string html, string[] exampleTags)
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("entering dropdown inputs", null, exampleTags);
-#line 47
+#line 49
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
 #line hidden
@@ -256,11 +274,11 @@ this.ScenarioInitialize(scenarioInfo);
                         "iframe"});
             table20.AddRow(new string[] {
                         string.Format("{0}", html)});
-#line 48
+#line 50
  testRunner.Given("injecting browser content", ((string)(null)), table20, "Given ");
-#line 51
+#line 53
  testRunner.When(string.Format("entering \'{0}\' into element \'{1}\'", value, target), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 52
+#line 54
  testRunner.Then(string.Format("the element \'{0}\' has the value \'{1}\'", target, value), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -279,7 +297,7 @@ this.ScenarioInitialize(scenarioInfo);
             "on><option value=\"test\">Bob</option></select>")]
         public virtual void EnteringDropdownInputs_NFor()
         {
-#line 47
+#line 49
 this.EnteringDropdownInputs("n for", "target", "Bob", "<label for=\"linky\">target</label><select id=\"linky\"><option value=\"bad\">Bad</opti" +
                     "on><option value=\"test\">Bob</option></select>", ((string[])(null)));
 #line hidden
@@ -288,7 +306,7 @@ this.EnteringDropdownInputs("n for", "target", "Bob", "<label for=\"linky\">targ
         public virtual void EnteringRadio(string description, string target, string value, string html, string[] exampleTags)
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("entering radio", null, exampleTags);
-#line 57
+#line 59
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
 #line hidden
@@ -296,11 +314,11 @@ this.ScenarioInitialize(scenarioInfo);
                         "iframe"});
             table21.AddRow(new string[] {
                         string.Format("{0}", html)});
-#line 58
+#line 60
  testRunner.Given("injecting browser content", ((string)(null)), table21, "Given ");
-#line 61
+#line 63
  testRunner.When(string.Format("entering \'{0}\' into element \'{1}\'", value, target), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 62
+#line 64
  testRunner.Then(string.Format("the element \'{0}\' has the value \'{1}\'", target, value), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -319,7 +337,7 @@ this.ScenarioInitialize(scenarioInfo);
             "p</label>")]
         public virtual void EnteringRadio_Value()
         {
-#line 57
+#line 59
 this.EnteringRadio("value", "target", "Bob", "<input type=\"radio\" id=\"i1\" name=\"target\" value=\"Bob\"></input><label for=\"i1\">noo" +
                     "p</label>", ((string[])(null)));
 #line hidden
@@ -328,7 +346,7 @@ this.EnteringRadio("value", "target", "Bob", "<input type=\"radio\" id=\"i1\" na
         public virtual void Clicking(string description, string target, string html, string[] exampleTags)
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("clicking", null, exampleTags);
-#line 67
+#line 69
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
 #line hidden
@@ -336,9 +354,9 @@ this.ScenarioInitialize(scenarioInfo);
                         "iframe"});
             table22.AddRow(new string[] {
                         string.Format("{0}", html)});
-#line 68
+#line 70
  testRunner.Given("injecting browser content", ((string)(null)), table22, "Given ");
-#line 71
+#line 73
  testRunner.When(string.Format("clicking the element \'{0}\'", target), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
             this.ScenarioCleanup();
@@ -355,7 +373,7 @@ this.ScenarioInitialize(scenarioInfo);
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:html", "<a href = \"https://www.w3schools.com/html/\" >target</a>")]
         public virtual void Clicking_0AText()
         {
-#line 67
+#line 69
 this.Clicking("0   a text", "target", "<a href = \"https://www.w3schools.com/html/\" >target</a>", ((string[])(null)));
 #line hidden
         }

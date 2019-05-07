@@ -209,21 +209,6 @@ this.ExternalEnter("Crazy Zip Code", "#crazy_cep", "8020211", "8-02-02-11", ((st
         }
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("external enter: Money")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "JQueryMask")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Money")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:name", "Money")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:id", "#money")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:entry", "123456")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:data", "1.234,56")]
-        public virtual void ExternalEnter_Money()
-        {
-#line 3
-this.ExternalEnter("Money", "#money", "123456", "1.234,56", ((string[])(null)));
-#line hidden
-        }
-        
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("external enter: Mask placeholder option")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "JQueryMask")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "Mask placeholder option")]
@@ -340,21 +325,6 @@ this.ExternalEnter("CPF", "#cpf", "1234567890", "12.345.678-90", ((string[])(nul
         {
 #line 3
 this.ExternalEnter("CNPJ", "#cnpj", "1234567890", "1.234/5678-90", ((string[])(null)));
-#line hidden
-        }
-        
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("external enter: IP Address")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "JQueryMask")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "IP Address")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:name", "IP Address")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:id", "#ip_address")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:entry", "123123123123")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:data", "123.123.123.123")]
-        public virtual void ExternalEnter_IPAddress()
-        {
-#line 3
-this.ExternalEnter("IP Address", "#ip_address", "123123123123", "123.123.123.123", ((string[])(null)));
 #line hidden
         }
         

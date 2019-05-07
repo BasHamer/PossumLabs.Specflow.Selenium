@@ -3,6 +3,8 @@ using FluentAssertions;
 using Microsoft.Extensions.Configuration;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OpenQA.Selenium;
+using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.Remote;
 using PossumLabs.Specflow.Core;
 using PossumLabs.Specflow.Core.Configuration;
 using PossumLabs.Specflow.Core.Exceptions;
@@ -32,13 +34,6 @@ namespace PossumLabs.Specflow.Selenium.UnitTests
         private ScreenshotProcessor ScreenshotProcessor { get; set; }
         private ImageLogging ImageLogging { get; set; }
         private MovieLogger MovieLogger { get; set; }
-
-        [BeforeScenario(Order = int.MinValue)]
-        public void SkipWhenNoSelenium()
-        {
-            if (Environment.GetEnvironmentVariable("NO_SELENIUM") == "true")
-                Assert.Inconclusive("NO_SELENIUM");
-        }
 
         [BeforeScenario(Order = int.MinValue + 1)]
         public void Setup()
@@ -120,6 +115,30 @@ namespace PossumLabs.Specflow.Selenium.UnitTests
                 $"Tags: {FeatureContext.FeatureInfo.Tags.LogFormat()} {ScenarioContext.ScenarioInfo.Tags.LogFormat()}");
 
             WebDriverManager.Initialize(BuildDriver);
+            WebDriverManager.WebDriverFactory = () =>
+            {
+                var options = new ChromeOptions();
+                // https://stackoverflow.com/questions/22322596/selenium-error-the-http-request-to-the-remote-webdriver-timed-out-after-60-sec?utm_medium=organic&utm_source=google_rich_qa&utm_campaign=google_rich_qa
+                options.AddArgument("no-sandbox"); //might be a fix :/
+                options.AddArgument("disable-popup-blocking");
+                options.AddArgument("disable-gpu");
+                options.AddArgument("disable-extensions");
+                options.AddArgument("disable-dev-shm-usage");
+
+                options.AddAdditionalCapability("username", WebDriverManager.SeleniumGridConfiguration.Username, true);
+                options.AddAdditionalCapability("accessKey", WebDriverManager.SeleniumGridConfiguration.AccessKey, true);
+
+                //TODO: Config value
+                var driver = new RemoteWebDriver(new Uri(WebDriverManager.SeleniumGridConfiguration.Url), options.ToCapabilities(), TimeSpan.FromSeconds(180));
+                //do not change this, the site is a bloody nightmare with overlaying buttons etc.
+                driver.Manage().Window.Size = WebDriverManager.DefaultSize;
+                var allowsDetection = driver as IAllowsFileDetection;
+                if (allowsDetection != null)
+                {
+                    allowsDetection.FileDetector = new LocalFileDetector();
+                }
+                return driver;
+            };
         }
 
         public WebDriver BuildDriver()
