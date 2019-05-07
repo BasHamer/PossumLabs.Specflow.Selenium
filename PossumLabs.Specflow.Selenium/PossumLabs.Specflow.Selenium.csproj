@@ -27,7 +27,7 @@ This library is intended to be used with Specflow and adds a wrapper around sele
     <PackageReference Include="Microsoft.Extensions.FileProviders.Abstractions" Version="2.2.0" />
     <PackageReference Include="Microsoft.Extensions.FileSystemGlobbing" Version="2.2.0" />
     <PackageReference Include="Microsoft.Extensions.Primitives" Version="2.2.0" />
-    <PackageReference Include="PossumLabs.Specflow.Core" Version="1.0.0-CI00014" />
+    <PackageReference Include="PossumLabs.Specflow.Core" Version="1.0.0-CI00016" />
     <PackageReference Include="Selenium.Support" Version="3.141.0" />
     <PackageReference Include="Selenium.WebDriver" Version="3.141.0" />
     <PackageReference Include="System.Drawing.Common" Version="4.5.1" />
