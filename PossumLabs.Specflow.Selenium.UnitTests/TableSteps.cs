@@ -8,7 +8,7 @@ using TechTalk.SpecFlow;
 using PossumLabs.Specflow.Core;
 using PossumLabs.Specflow.Selenium;
 
-namespace PossumLabs.Specflow.Selenium.UnitTests
+namespace PossumLabs.Specflow.Selenium.Integration
 {
     [Binding]
     public class TableSteps : WebDriverStepBase

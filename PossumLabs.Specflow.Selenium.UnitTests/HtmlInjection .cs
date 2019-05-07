@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
 
-namespace PossumLabs.Specflow.Selenium.UnitTests
+namespace PossumLabs.Specflow.Selenium.Integration
 {
     public class HtmlInjection : IValueObject
     {

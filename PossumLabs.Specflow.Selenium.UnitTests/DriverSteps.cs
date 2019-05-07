@@ -4,7 +4,7 @@ using PossumLabs.Specflow.Selenium;
 using PossumLabs.Specflow.Selenium.Selectors;
 using TechTalk.SpecFlow;
 
-namespace PossumLabs.Specflow.Selenium.UnitTests
+namespace PossumLabs.Specflow.Selenium.Integration
 {
     [Binding]
     public class DriverSteps: WebDriverStepBase

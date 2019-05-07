@@ -1,0 +1,155 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="FluentAssertions" Version="5.6.0" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.9.0" />
+    <PackageReference Include="MSTest.TestAdapter" Version="1.3.2" />
+    <PackageReference Include="MSTest.TestFramework" Version="1.3.2" />
+    <PackageReference Include="PossumLabs.Specflow.Core" Version="1.0.0-CI00016" />
+    <PackageReference Include="Selenium.Chrome.WebDriver" Version="74.0.0" />
+    <PackageReference Include="Selenium.WebDriver" Version="3.141.0" />
+    <PackageReference Include="SpecFlow" Version="3.0.199" />
+    <PackageReference Include="SpecFlow.MsTest" Version="3.0.199" />
+    <PackageReference Include="SpecFlow.Tools.MsBuild.Generation" Version="3.0.199" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\PossumLabs.Specflow.Selenium\PossumLabs.Specflow.Selenium.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="features\ActiveElement.feature.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>ActiveElement.feature</DependentUpon>
+    </Compile>
+    <Compile Update="features\Bootstrap.feature.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Bootstrap.feature</DependentUpon>
+    </Compile>
+    <Compile Update="features\Google.feature.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Google.feature</DependentUpon>
+    </Compile>
+    <Compile Update="features\IFrames.feature.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>IFrames.feature</DependentUpon>
+    </Compile>
+    <Compile Update="features\JQueryMask.feature.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>JQueryMask.feature</DependentUpon>
+    </Compile>
+    <Compile Update="features\Script Based Clear.feature.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Script Based Clear.feature</DependentUpon>
+    </Compile>
+    <Compile Update="features\Selectable.feature.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Selectable.feature</DependentUpon>
+    </Compile>
+    <Compile Update="features\Tables.feature.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Tables.feature</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="appsettings.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="features\ActiveElement.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+    </None>
+    <None Update="features\Bootstrap.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+    </None>
+    <None Update="features\Checkable.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>Checkable.feature.cs</LastGenOutput>
+    </None>
+    <None Update="features\Google.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>Google.feature.cs</LastGenOutput>
+    </None>
+    <None Update="features\IFrames.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+    </None>
+    <None Update="features\JQueryMask.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+    </None>
+    <None Update="features\RowSelector.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>RowSelector.feature.cs</LastGenOutput>
+    </None>
+    <None Update="features\Script Based Clear.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+    </None>
+    <None Update="features\Selectable.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+    </None>
+    <None Update="features\Settable.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>Settable.feature.cs</LastGenOutput>
+    </None>
+    <None Update="features\Tables.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+    </None>
+    <None Update="features\UnderSelector.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>UnderSelector.feature.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <SpecFlowFeatureFiles Update="features\ActiveElement.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+    </SpecFlowFeatureFiles>
+    <SpecFlowFeatureFiles Update="features\Bootstrap.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+    </SpecFlowFeatureFiles>
+    <SpecFlowFeatureFiles Update="features\Checkable.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+    </SpecFlowFeatureFiles>
+    <SpecFlowFeatureFiles Update="features\Google.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+    </SpecFlowFeatureFiles>
+    <SpecFlowFeatureFiles Update="features\IFrames.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+    </SpecFlowFeatureFiles>
+    <SpecFlowFeatureFiles Update="features\JQueryMask.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+    </SpecFlowFeatureFiles>
+    <SpecFlowFeatureFiles Update="features\RowSelector.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+    </SpecFlowFeatureFiles>
+    <SpecFlowFeatureFiles Update="features\Script Based Clear.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+    </SpecFlowFeatureFiles>
+    <SpecFlowFeatureFiles Update="features\Selectable.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+    </SpecFlowFeatureFiles>
+    <SpecFlowFeatureFiles Update="features\Settable.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+    </SpecFlowFeatureFiles>
+    <SpecFlowFeatureFiles Update="features\Tables.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+    </SpecFlowFeatureFiles>
+    <SpecFlowFeatureFiles Update="features\UnderSelector.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+    </SpecFlowFeatureFiles>
+  </ItemGroup>
+
+</Project>

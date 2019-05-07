@@ -7,7 +7,7 @@ using BoDi;
 using PossumLabs.Specflow.Core;
 using TechTalk.SpecFlow;
 
-namespace PossumLabs.Specflow.Selenium.UnitTests
+namespace PossumLabs.Specflow.Selenium.Integration
 {
     [Binding]
     public class ResolvedStringSteps : StepBase

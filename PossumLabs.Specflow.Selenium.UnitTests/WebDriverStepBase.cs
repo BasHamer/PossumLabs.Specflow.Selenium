@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using TechTalk.SpecFlow;
 
-namespace PossumLabs.Specflow.Selenium.UnitTests
+namespace PossumLabs.Specflow.Selenium.Integration
 {
     public abstract class WebDriverStepBase:StepBase
     {

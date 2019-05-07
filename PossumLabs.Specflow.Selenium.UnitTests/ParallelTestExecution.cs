@@ -5,7 +5,7 @@ using System.Text;
 
 [assembly: Parallelize(Workers = 8, Scope = ExecutionScope.ClassLevel)]
 
-namespace PossumLabs.Specflow.Selenium.UnitTests
+namespace PossumLabs.Specflow.Selenium.Integration
 {
     class ParallelTestExecution
     {
