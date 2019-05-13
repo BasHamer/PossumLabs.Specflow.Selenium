@@ -235,11 +235,14 @@ for (var i=0 ; i<nodesSnapshot.snapshotLength; i++ )
         => ActionExecutor.ResetInputState();
 
         public void ScriptClear(string id)
+            => ScriptSet(id, "");
+
+        public void ScriptSet(string id, string val)
         {
             var jsDriver = Driver as IJavaScriptExecutor;
             jsDriver.ExecuteScript(@"
 try{
-    var i = $('#" + id + @"').val('');
+    var i = $('#'+arguments[0]).val(arguments[1]);
 
     if(typeof i.update === 'function') {
         i.update();
@@ -255,7 +258,7 @@ try{
     }
 }
 catch(err) {
-}");
+}", id, val);
         }
 
     }

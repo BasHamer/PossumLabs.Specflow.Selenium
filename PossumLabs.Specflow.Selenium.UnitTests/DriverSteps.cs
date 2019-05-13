@@ -75,6 +75,11 @@ namespace PossumLabs.Specflow.Selenium.Integration
             => Executor.Execute(()
             => WebDriver.Select(selector).ScriptClear());
 
+        [When(@"using javascript setting '(.*)' for element '(.*)'")]
+        public void WhenScriptSetting(ResolvedString text, ActiveElementSelector selector)
+            => Executor.Execute(()
+            => WebDriver.Select(selector).ScriptSet(text));
+
         [When(@"selecting the element '(.*)'")]
         public void WhenSelectingTheElement(ActiveElementSelector selector)
             => Executor.Execute(()

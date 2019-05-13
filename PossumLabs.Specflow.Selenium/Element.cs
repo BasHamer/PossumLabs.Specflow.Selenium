@@ -103,6 +103,10 @@ namespace PossumLabs.Specflow.Selenium
             {
                 Thread.Sleep(1000);
                 if (!Equivalent(WebElement.GetAttribute("value"), text))
+                    ScriptSet(text);
+
+                Thread.Sleep(100);
+                if (!Equivalent(WebElement.GetAttribute("value"), text))
                     throw new Exception($"failed setting element, desired '{text}' got '{WebElement.GetAttribute("value")}'");
             }
         }
@@ -110,6 +114,11 @@ namespace PossumLabs.Specflow.Selenium
         public void ScriptClear()
         {
             ((LoggingWebDriver)WebDriver).ScriptClear(Id);
+        }
+
+        public void ScriptSet(string val)
+        {
+            ((LoggingWebDriver)WebDriver).ScriptSet(Id, val);
         }
 
         protected bool Equivalent(string actual, string desired)
