@@ -18,14 +18,14 @@ namespace PossumLabs.Specflow.Selenium.Integration.Features
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "3.0.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [Microsoft.VisualStudio.TestTools.UnitTesting.TestClassAttribute()]
-    public partial class GoogleFeature
+    public partial class FileUploadTestsFeature
     {
         
         private static TechTalk.SpecFlow.ITestRunner testRunner;
         
         private Microsoft.VisualStudio.TestTools.UnitTesting.TestContext _testContext;
         
-#line 1 "Google.feature"
+#line 1 "FileUpload.feature"
 #line hidden
         
         public virtual Microsoft.VisualStudio.TestTools.UnitTesting.TestContext TestContext
@@ -44,8 +44,7 @@ namespace PossumLabs.Specflow.Selenium.Integration.Features
         public static void FeatureSetup(Microsoft.VisualStudio.TestTools.UnitTesting.TestContext testContext)
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en"), "Google", null, ProgrammingLanguage.CSharp, new string[] {
-                        "SingleBrowser"});
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en"), "File Upload tests", null, ProgrammingLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -60,9 +59,9 @@ namespace PossumLabs.Specflow.Selenium.Integration.Features
         public virtual void TestInitialize()
         {
             if (((testRunner.FeatureContext != null) 
-                        && (testRunner.FeatureContext.FeatureInfo.Title != "Google")))
+                        && (testRunner.FeatureContext.FeatureInfo.Title != "File Upload tests")))
             {
-                global::PossumLabs.Specflow.Selenium.Integration.Features.GoogleFeature.FeatureSetup(null);
+                global::PossumLabs.Specflow.Selenium.Integration.Features.FileUploadTestsFeature.FeatureSetup(null);
             }
         }
         
@@ -88,55 +87,41 @@ namespace PossumLabs.Specflow.Selenium.Integration.Features
             testRunner.CollectScenarioErrors();
         }
         
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("google something")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Google")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("SingleBrowser")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("scenarioAttribute")]
-        public virtual void GoogleSomething()
+        public virtual void SimpleFileControl(string description, string target, string value, string newValue, string html, string[] exampleTags)
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("google something", null, new string[] {
-                        "scenarioAttribute"});
-#line 5
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("simple file control", null, exampleTags);
+#line 3
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
-#line 6
- testRunner.Given("navigated to \'http://google.com\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
+            TechTalk.SpecFlow.Table table15 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Html"});
+            table15.AddRow(new string[] {
+                        string.Format("{0}", html)});
+#line 4
+ testRunner.Given("injecting browser content", ((string)(null)), table15, "Given ");
 #line 7
- testRunner.When("entering \'Possum Labs\' into element \'Search\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.When(string.Format("entering \'{0}\' into element \'{1}\'", value, target), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 8
- testRunner.And("clicking the element \'Google Search\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 9
- testRunner.Then("the page contains the element \'About\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then(string.Format("the element \'{0}\' has the value \'{1}\'", target, newValue), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("google failed")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Google")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("SingleBrowser")]
-        public virtual void GoogleFailed()
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("simple file control: input for")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "File Upload tests")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "input for")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:description", "input for")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:target", "target")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:value", "c:\\temp\\temp.txt")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:newValue", "C:\\fakepath\\temp.txt")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:html", "<label for=\"linky\">target</label><input id=\"linky\" type=\"file\"></input>")]
+        public virtual void SimpleFileControl_InputFor()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("google failed", null, ((string[])(null)));
-#line 11
-this.ScenarioInitialize(scenarioInfo);
-            this.ScenarioStart();
-#line 12
- testRunner.Given("navigated to \'http://google.com\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 13
- testRunner.And("an error is expected", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 14
- testRunner.When("clicking the element \'Bob\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 3
+this.SimpleFileControl("input for", "target", "c:\\temp\\temp.txt", "C:\\fakepath\\temp.txt", "<label for=\"linky\">target</label><input id=\"linky\" type=\"file\"></input>", ((string[])(null)));
 #line hidden
-            TechTalk.SpecFlow.Table table16 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Message"});
-            table16.AddRow(new string[] {
-                        "/.*Google Search.*/"});
-#line 15
- testRunner.Then("the Error has values", ((string)(null)), table16, "Then ");
-#line hidden
-            this.ScenarioCleanup();
         }
     }
 }

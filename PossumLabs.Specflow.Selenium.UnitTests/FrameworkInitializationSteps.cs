@@ -114,6 +114,8 @@ namespace PossumLabs.Specflow.Selenium.Integration
             Log.Message($"feature: {FeatureContext.FeatureInfo.Title} scenario: {ScenarioContext.ScenarioInfo.Title} \n" +
                 $"Tags: {FeatureContext.FeatureInfo.Tags.LogFormat()} {ScenarioContext.ScenarioInfo.Tags.LogFormat()}");
 
+            System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
+
             WebDriverManager.Initialize(BuildDriver);
             WebDriverManager.WebDriverFactory = () =>
             {

@@ -68,7 +68,7 @@ namespace PossumLabs.Specflow.Selenium
                 WebElement.Click();
                 Thread.Sleep(100);
                 WebElement.SendKeys(text);
-                if (Equivalent(WebElement.GetAttribute("value"), text))
+                if (WebElement.GetAttribute("type") == "file" || Equivalent(WebElement.GetAttribute("value"), text))
                     return;
             }
             catch (WebDriverException e)
