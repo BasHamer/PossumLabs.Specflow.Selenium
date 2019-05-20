@@ -20,7 +20,7 @@ namespace PossumLabs.Specflow.Selenium
     public class WebDriver : IDomainObject, IWebDriverWrapper
     {
         public WebDriver(
-            IWebDriver driver, 
+            IWebDriver seleniumDriver, 
             Func<Uri> rootUrl, 
             SeleniumGridConfiguration configuration, 
             RetryExecutor retryExecutor, 
@@ -30,7 +30,7 @@ namespace PossumLabs.Specflow.Selenium
             MovieLogger movieLogger,
             IEnumerable<SelectorPrefix> prefixes = null)
         {
-            Driver = driver;
+            SeleniuimDriver = seleniumDriver;
             SuccessfulSearchers = new List<Searcher>();
             RootUrl = rootUrl;
             SeleniumGridConfiguration = configuration;
@@ -48,7 +48,17 @@ namespace PossumLabs.Specflow.Selenium
         private ElementFactory ElementFactory { get; }
         private XpathProvider XpathProvider { get; }
         private Func<Uri> RootUrl { get; set; }
-        private IWebDriver Driver { get; }
+        public IWebDriver SeleniuimDriver { get; }
+        public IJavaScriptExecutor ScriptExecutor
+        { get
+            {
+                var scriptExecutor = SeleniuimDriver as IJavaScriptExecutor;
+                if (scriptExecutor == null)
+                    throw new Exception("this webdriver does not support script executon.");
+
+                    return scriptExecutor;
+            }
+        }
         private SelectorFactory SelectorFactory { get; }
         private List<Searcher> SuccessfulSearchers { get; }
         private MovieLogger MovieLogger { get; }
@@ -57,7 +67,7 @@ namespace PossumLabs.Specflow.Selenium
         => RetryExecutor.RetryFor(() =>
         {
             
-            var loggingWebdriver = new LoggingWebDriver(Driver, MovieLogger);
+            var loggingWebdriver = new LoggingWebDriver(SeleniuimDriver, MovieLogger);
             try
             {
                 var possilbeTables = GetTables(headers.Count()).ToList();
@@ -80,13 +90,13 @@ namespace PossumLabs.Specflow.Selenium
                     return tableElements.ToArray()[index.Value];
                 }
                 //iframes ? 
-                var iframes = Driver.FindElements(By.XPath("//iframe"));
+                var iframes = SeleniuimDriver.FindElements(By.XPath("//iframe"));
                 foreach (var iframe in iframes)
                 {
                     try
                     {
                         loggingWebdriver.Log($"Trying iframe:{iframe}");
-                        Driver.SwitchTo().Frame(iframe);
+                        SeleniuimDriver.SwitchTo().Frame(iframe);
                         possilbeTables = GetTables(headers.Count() - 1).ToList();
 
                         tableElements = possilbeTables.Where(t => headers.Where(h => !string.IsNullOrEmpty(h)).Except(t.Header.Keys,
@@ -106,7 +116,7 @@ namespace PossumLabs.Specflow.Selenium
                     catch
                     { }
                 }
-                Driver.SwitchTo().DefaultContent();
+                SeleniuimDriver.SwitchTo().DefaultContent();
                 throw new Exception($"table was not found");
             }
             finally
@@ -125,9 +135,9 @@ namespace PossumLabs.Specflow.Selenium
                 $"thead/tr[th[{minimumWidth}] or td[{minimumWidth}]]" +
                 $"]";
             //var xpath = $"//tr[*[self::td or self::th][{minimumWidth}] and (.|parent::tbody)[1]/parent::table]/ancestor::table[1]";
-            var tables = Driver.
+            var tables = SeleniuimDriver.
                 FindElements(By.XPath(xpath))
-                .Select(t => new TableElement(t, Driver, ElementFactory, XpathProvider)).ToList();
+                .Select(t => new TableElement(t, SeleniuimDriver, ElementFactory, XpathProvider)).ToList();
             var Ordinal = 1;
             foreach (var table in tables)
             {
@@ -148,43 +158,43 @@ namespace PossumLabs.Specflow.Selenium
         public void NavigateTo(string url)
         {
             if (Uri.TryCreate(url, UriKind.Absolute, out var absolute))
-                Driver.Navigate().GoToUrl(url);
+                SeleniuimDriver.Navigate().GoToUrl(url);
             else
-                Driver.Navigate().GoToUrl(RootUrl().AbsoluteUri + url);
+                SeleniuimDriver.Navigate().GoToUrl(RootUrl().AbsoluteUri + url);
         }
 
         public void Close()
-            => Driver.Close();
+            => SeleniuimDriver.Close();
 
         public void LeaveFrames()
-            => Driver.SwitchTo().DefaultContent();
+            => SeleniuimDriver.SwitchTo().DefaultContent();
 
         public Actions BuildAction()
-            => new Actions(Driver);
+            => new Actions(SeleniuimDriver);
 
         public void LoadPage(string html)
-            => Driver.Navigate().GoToUrl("data:text/html;charset=utf-8," + html);
+            => SeleniuimDriver.Navigate().GoToUrl("data:text/html;charset=utf-8," + html);
 
         public void SwitchToWindow(string window)
-            => Driver.SwitchTo().Window(window);
+            => SeleniuimDriver.SwitchTo().Window(window);
 
         public Element Select(Selector selector, TimeSpan? retryDuration = null, int? index = null)
             => RetryExecutor.RetryFor(() =>
              {
-                 var loggingWebdriver = new LoggingWebDriver(Driver, MovieLogger);
+                 var loggingWebdriver = new LoggingWebDriver(SeleniuimDriver, MovieLogger);
                  try
                  {
                      var element = FindElement(selector, loggingWebdriver, index);
                      if (element != null)
                          return element;
                      //iframes ? 
-                     var iframes = Driver.FindElements(By.XPath("//iframe"));
+                     var iframes = SeleniuimDriver.FindElements(By.XPath("//iframe"));
                      foreach (var iframe in iframes)
                      {
                          try
                          {
                              loggingWebdriver.Log($"Trying iframe:{iframe}");
-                             Driver.SwitchTo().Frame(iframe);
+                             SeleniuimDriver.SwitchTo().Frame(iframe);
                              element = FindElement(selector, loggingWebdriver, index);
                              if (element != null)
                                  return element;
@@ -192,7 +202,7 @@ namespace PossumLabs.Specflow.Selenium
                          catch
                          { }
                      }
-                     Driver.SwitchTo().DefaultContent();
+                     SeleniuimDriver.SwitchTo().DefaultContent();
                      throw new Exception($"element was not found; tried:\n{loggingWebdriver.GetLogs()}, maybe try one of these identifiers {GetIdentifiers().Take(10).LogFormat()}");
                  }
                  finally
@@ -206,20 +216,20 @@ namespace PossumLabs.Specflow.Selenium
         public IEnumerable<Element> SelectMany(Selector selector)
             => RetryExecutor.RetryFor(() =>
             {
-                var loggingWebdriver = new LoggingWebDriver(Driver, MovieLogger);
+                var loggingWebdriver = new LoggingWebDriver(SeleniuimDriver, MovieLogger);
                 try
                 {
                     var elements = FindElements(selector, loggingWebdriver);
                     if (elements != null)
                         return elements;
                     //iframes ? 
-                    var iframes = Driver.FindElements(By.XPath("//iframe"));
+                    var iframes = SeleniuimDriver.FindElements(By.XPath("//iframe"));
                     foreach (var iframe in iframes)
                     {
                         try
                         {
                             loggingWebdriver.Log($"Trying iframe:{iframe}");
-                            Driver.SwitchTo().Frame(iframe);
+                            SeleniuimDriver.SwitchTo().Frame(iframe);
                             elements = FindElements(selector, loggingWebdriver);
                             if (elements != null)
                                 return elements;
@@ -227,7 +237,7 @@ namespace PossumLabs.Specflow.Selenium
                         catch
                         { }
                     }
-                    Driver.SwitchTo().DefaultContent();
+                    SeleniuimDriver.SwitchTo().DefaultContent();
                     return new List<Element>();
                 }
                 finally
@@ -239,10 +249,10 @@ namespace PossumLabs.Specflow.Selenium
             }, TimeSpan.FromMilliseconds(SeleniumGridConfiguration.RetryMs));
 
         public void DismissAllert()
-            => Driver.SwitchTo().Alert().Dismiss();
+            => SeleniuimDriver.SwitchTo().Alert().Dismiss();
 
         public void AcceptAllert()
-            => Driver.SwitchTo().Alert().Accept();
+            => SeleniuimDriver.SwitchTo().Alert().Accept();
 
         private class Wrapper
         {
@@ -250,7 +260,6 @@ namespace PossumLabs.Specflow.Selenium
             public Element Element;
             public Searcher Searcher;
             public Exception Exception;
-            public long DurationMs;
         }
 
         private Element FindElement(Selector selector, LoggingWebDriver loggingWebdriver, int? index = null)
@@ -371,7 +380,7 @@ namespace PossumLabs.Specflow.Selenium
 
             Parallel.ForEach(options, (option, loopState) =>
             {
-                var elements = Driver.FindElements(option.Item1);
+                var elements = SeleniuimDriver.FindElements(option.Item1);
                 foreach (var e in elements)
                 {
                     try
@@ -387,7 +396,7 @@ namespace PossumLabs.Specflow.Selenium
         }
 
         public void ExecuteScript(string script)
-            => ((IJavaScriptExecutor)Driver).ExecuteScript(script);
+            => ((IJavaScriptExecutor)SeleniuimDriver).ExecuteScript(script);
 
         public WebDriver Under(UnderSelectorPrefix under)
             => Prefix(under);
@@ -409,7 +418,7 @@ namespace PossumLabs.Specflow.Selenium
             var possibles = l.CrossMultiply(); 
             RetryExecutor.RetryFor(() =>
                {
-                   var valid = possibles.AsParallel().AsOrdered().Where(xpath => Driver.FindElements(By.XPath(xpath)).Any()).ToList();
+                   var valid = possibles.AsParallel().AsOrdered().Where(xpath => SeleniuimDriver.FindElements(By.XPath(xpath)).Any()).ToList();
                    if (valid.Any())
                        p.Init("filtered", valid);
                    else
@@ -417,7 +426,7 @@ namespace PossumLabs.Specflow.Selenium
                }, TimeSpan.FromMilliseconds(SeleniumGridConfiguration.RetryMs));
 
             var wdm = new WebDriver(
-                Driver,
+                SeleniuimDriver,
                 RootUrl,
                 SeleniumGridConfiguration,
                 RetryExecutor,
@@ -442,7 +451,7 @@ namespace PossumLabs.Specflow.Selenium
             byte[] data = null;
             try
             {
-                data = ((ITakesScreenshot)Driver).GetScreenshot().AsByteArray;
+                data = ((ITakesScreenshot)SeleniuimDriver).GetScreenshot().AsByteArray;
             }
             catch (OpenQA.Selenium.UnhandledAlertException) { }
             catch (OpenQA.Selenium.NoSuchWindowException) { }
@@ -458,16 +467,16 @@ namespace PossumLabs.Specflow.Selenium
 
         public string LogFormat() => Url;
 
-        public string PageSource { get => Driver.PageSource; }
-        public string Url { get => Driver.Url; }
-        public IEnumerable<string> Windows { get => Driver.WindowHandles; }
+        public string PageSource { get => SeleniuimDriver.PageSource; }
+        public string Url { get => SeleniuimDriver.Url; }
+        public IEnumerable<string> Windows { get => SeleniuimDriver.WindowHandles; }
         public string AlertText
         {
             get
             {
                 try
                 {
-                    return Driver.SwitchTo().Alert().Text;
+                    return SeleniuimDriver.SwitchTo().Alert().Text;
 
                 }
                 catch
@@ -479,14 +488,14 @@ namespace PossumLabs.Specflow.Selenium
 
         public Size Size
         {
-            get => Driver.Manage().Window.Size;
-            set => Driver.Manage().Window.Size = value;
+            get => SeleniuimDriver.Manage().Window.Size;
+            set => SeleniuimDriver.Manage().Window.Size = value;
         }
         public bool HasAlert
         {
             get {
                 try {
-                    Driver.SwitchTo().Alert();
+                    SeleniuimDriver.SwitchTo().Alert();
                     return true;
                 }
                 catch {
@@ -495,7 +504,7 @@ namespace PossumLabs.Specflow.Selenium
             }
         }
 
-        IWebDriver IWebDriverWrapper.IWebDriver => Driver;
+        IWebDriver IWebDriverWrapper.IWebDriver => SeleniuimDriver;
 
         public bool Disposed { get; set; }
     }

@@ -3,10 +3,7 @@
 
 Scenario Outline: datepicker external enter and clear
 	Given navigated to '<url>'
-	When entering '<entry>' into element '//div[@id="sandbox-container"]/input'
-	And clicking the element '#sandbox-html'
-	And using javascript setting '<entry>' for element '//div[@id="sandbox-container"]/input'
-	And clicking the element '#sandbox-html'
+	When using javascript setting '<entry>' for element '//div[@id="sandbox-container"]/input'
 	Then the element '//div[@id="sandbox-container"]/input' has the value '<entry>'
 Examples:
 | name                     | entry      | xpath                                  | url                                                                                                                                                                                                                                                                                                    |
@@ -20,10 +17,7 @@ Examples:
 Scenario Outline: datepicker external enter version 2
 	Given navigated to '<url>'
 	When clicking the element 'Switch to Bootstrap 2'
-	And entering '<entry>' into element '//div[@id="sandbox-container"]/input'
-	And clicking the element '#sandbox-html'
 	And using javascript setting '<entry>' for element '//div[@id="sandbox-container"]/input'
-	And clicking the element '#sandbox-html'
 	Then the element '//div[@id="sandbox-container"]/input' has the value '<entry>'
 Examples:
 | name                     | entry      | xpath                                  | url                                                                                                                                                                                                                                                                                                    |

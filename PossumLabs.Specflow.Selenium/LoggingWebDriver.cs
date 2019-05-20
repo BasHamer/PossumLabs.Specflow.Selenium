@@ -234,31 +234,24 @@ for (var i=0 ; i<nodesSnapshot.snapshotLength; i++ )
         public void ResetInputState()
         => ActionExecutor.ResetInputState();
 
-        public void ScriptClear(string id)
-            => ScriptSet(id, "");
+        public void ScriptClear(IWebElement e)
+            => ScriptSet(e, "");
 
-        public void ScriptSet(string id, string val)
+        public void ScriptSet(IWebElement e, string val)
         {
             var jsDriver = Driver as IJavaScriptExecutor;
-            jsDriver.ExecuteScript(@"
+            var r = jsDriver.ExecuteScript(@"
 try{
-    var i = $('#'+arguments[0]).val(arguments[1]);
-
-    if(typeof i.update === 'function') {
-        i.update();
-    } 
-
-    for(var n in i) {
-      if(typeof i[n] === 'function') {
-        continue;
-      }
-      if(typeof i[n].update === 'function') {
-        i[n].update();
-      }
-    }
+    var i = $(arguments[1]);
+    i.val(arguments[0]);
+    i.trigger( 'change' );
+    return  i.val();
 }
 catch(err) {
-}", id, val);
+return err
+}", val, e);
+            if (r?.ToString() != val)
+                throw new Exception(r.ToString());
         }
 
     }

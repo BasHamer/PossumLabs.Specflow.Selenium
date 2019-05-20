@@ -96,15 +96,9 @@ this.ScenarioInitialize(scenarioInfo);
 #line 5
  testRunner.Given(string.Format("navigated to \'{0}\'", url), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 6
- testRunner.When(string.Format("entering \'{0}\' into element \'//div[@id=\"sandbox-container\"]/input\'", entry), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.When(string.Format("using javascript setting \'{0}\' for element \'//div[@id=\"sandbox-container\"]/input\'" +
+                        "", entry), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 7
- testRunner.And("clicking the element \'#sandbox-html\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 8
- testRunner.And(string.Format("using javascript setting \'{0}\' for element \'//div[@id=\"sandbox-container\"]/input\'" +
-                        "", entry), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 9
- testRunner.And("clicking the element \'#sandbox-html\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 10
  testRunner.Then(string.Format("the element \'//div[@id=\"sandbox-container\"]/input\' has the value \'{0}\'", entry), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -203,23 +197,17 @@ this.DatepickerExternalEnterAndClear("Component no forceparse", "11/11/2000", "/
         public virtual void DatepickerExternalEnterVersion2(string name, string entry, string xpath, string url, string[] exampleTags)
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("datepicker external enter version 2", null, exampleTags);
-#line 20
+#line 17
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
-#line 21
+#line 18
  testRunner.Given(string.Format("navigated to \'{0}\'", url), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 22
+#line 19
  testRunner.When("clicking the element \'Switch to Bootstrap 2\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 23
- testRunner.And(string.Format("entering \'{0}\' into element \'//div[@id=\"sandbox-container\"]/input\'", entry), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 24
- testRunner.And("clicking the element \'#sandbox-html\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 25
+#line 20
  testRunner.And(string.Format("using javascript setting \'{0}\' for element \'//div[@id=\"sandbox-container\"]/input\'" +
                         "", entry), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 26
- testRunner.And("clicking the element \'#sandbox-html\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 27
+#line 21
  testRunner.Then(string.Format("the element \'//div[@id=\"sandbox-container\"]/input\' has the value \'{0}\'", entry), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -235,7 +223,7 @@ this.ScenarioInitialize(scenarioInfo);
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:url", @"https://uxsolutions.github.io/bootstrap-datepicker/?markup=input&format=&weekStart=&startDate=&endDate=&startView=0&minViewMode=0&maxViewMode=4&todayBtn=false&clearBtn=false&language=en&orientation=auto&multidate=&multidateSeparator=&keyboardNavigation=on&forceParse=on#sandbox")]
         public virtual void DatepickerExternalEnterVersion2_TextInput()
         {
-#line 20
+#line 17
 this.DatepickerExternalEnterVersion2("Text input", "11/11/2000", "//div[@id=\"sandbox-container\"]/input", @"https://uxsolutions.github.io/bootstrap-datepicker/?markup=input&format=&weekStart=&startDate=&endDate=&startView=0&minViewMode=0&maxViewMode=4&todayBtn=false&clearBtn=false&language=en&orientation=auto&multidate=&multidateSeparator=&keyboardNavigation=on&forceParse=on#sandbox", ((string[])(null)));
 #line hidden
         }
@@ -250,7 +238,7 @@ this.DatepickerExternalEnterVersion2("Text input", "11/11/2000", "//div[@id=\"sa
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:url", @"https://uxsolutions.github.io/bootstrap-datepicker/?markup=component&format=&weekStart=&startDate=&endDate=&startView=0&minViewMode=0&maxViewMode=4&todayBtn=false&clearBtn=false&language=en&orientation=auto&multidate=&multidateSeparator=&keyboardNavigation=on&forceParse=on#sandbox")]
         public virtual void DatepickerExternalEnterVersion2_Component()
         {
-#line 20
+#line 17
 this.DatepickerExternalEnterVersion2("Component", "11/11/2000", "//*[@id=\"sandbox-container\"]/div/input", @"https://uxsolutions.github.io/bootstrap-datepicker/?markup=component&format=&weekStart=&startDate=&endDate=&startView=0&minViewMode=0&maxViewMode=4&todayBtn=false&clearBtn=false&language=en&orientation=auto&multidate=&multidateSeparator=&keyboardNavigation=on&forceParse=on#sandbox", ((string[])(null)));
 #line hidden
         }
@@ -265,7 +253,7 @@ this.DatepickerExternalEnterVersion2("Component", "11/11/2000", "//*[@id=\"sandb
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:url", @"https://uxsolutions.github.io/bootstrap-datepicker/?markup=input&format=&weekStart=&startDate=&endDate=&startView=0&minViewMode=0&maxViewMode=4&todayBtn=false&clearBtn=false&language=en&orientation=auto&multidate=&multidateSeparator=&autoclose=on&KeyboardNavigation=on&forceParse=on#sandbox")]
         public virtual void DatepickerExternalEnterVersion2_TextInputAutoclose()
         {
-#line 20
+#line 17
 this.DatepickerExternalEnterVersion2("Text input autoclose", "11/11/2000", "//div[@id=\"sandbox-container\"]/input", @"https://uxsolutions.github.io/bootstrap-datepicker/?markup=input&format=&weekStart=&startDate=&endDate=&startView=0&minViewMode=0&maxViewMode=4&todayBtn=false&clearBtn=false&language=en&orientation=auto&multidate=&multidateSeparator=&autoclose=on&KeyboardNavigation=on&forceParse=on#sandbox", ((string[])(null)));
 #line hidden
         }
@@ -280,7 +268,7 @@ this.DatepickerExternalEnterVersion2("Text input autoclose", "11/11/2000", "//di
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:url", @"https://uxsolutions.github.io/bootstrap-datepicker/?markup=component&format=&weekStart=&startDate=&endDate=&startView=0&minViewMode=0&maxViewMode=4&todayBtn=false&clearBtn=false&language=en&orientation=auto&multidate=&multidateSeparator=&autoclose=on&KeyboardNavigation=on&forceParse=on#sandbox")]
         public virtual void DatepickerExternalEnterVersion2_ComponentAutoclose()
         {
-#line 20
+#line 17
 this.DatepickerExternalEnterVersion2("Component autoclose", "11/11/2000", "//*[@id=\"sandbox-container\"]/div/input", @"https://uxsolutions.github.io/bootstrap-datepicker/?markup=component&format=&weekStart=&startDate=&endDate=&startView=0&minViewMode=0&maxViewMode=4&todayBtn=false&clearBtn=false&language=en&orientation=auto&multidate=&multidateSeparator=&autoclose=on&KeyboardNavigation=on&forceParse=on#sandbox", ((string[])(null)));
 #line hidden
         }
@@ -295,7 +283,7 @@ this.DatepickerExternalEnterVersion2("Component autoclose", "11/11/2000", "//*[@
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:url", @"https://uxsolutions.github.io/bootstrap-datepicker/?markup=input&format=&weekStart=&startDate=&endDate=&startView=0&minViewMode=0&maxViewMode=4&todayBtn=false&clearBtn=false&language=en&orientation=auto&multidate=&multidateSeparator=&KeyboardNavigation=on#sandbox")]
         public virtual void DatepickerExternalEnterVersion2_TextInputNoForceparse()
         {
-#line 20
+#line 17
 this.DatepickerExternalEnterVersion2("Text input no forceparse", "11/11/2000", "//div[@id=\"sandbox-container\"]/input", @"https://uxsolutions.github.io/bootstrap-datepicker/?markup=input&format=&weekStart=&startDate=&endDate=&startView=0&minViewMode=0&maxViewMode=4&todayBtn=false&clearBtn=false&language=en&orientation=auto&multidate=&multidateSeparator=&KeyboardNavigation=on#sandbox", ((string[])(null)));
 #line hidden
         }
@@ -310,7 +298,7 @@ this.DatepickerExternalEnterVersion2("Text input no forceparse", "11/11/2000", "
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:url", @"https://uxsolutions.github.io/bootstrap-datepicker/?markup=component&format=&weekStart=&startDate=&endDate=&startView=0&minViewMode=0&maxViewMode=4&todayBtn=false&clearBtn=false&language=en&orientation=auto&multidate=&multidateSeparator=&KeyboardNavigation=on#sandbox")]
         public virtual void DatepickerExternalEnterVersion2_ComponentNoForceparse()
         {
-#line 20
+#line 17
 this.DatepickerExternalEnterVersion2("Component no forceparse", "11/11/2000", "//*[@id=\"sandbox-container\"]/div/input", @"https://uxsolutions.github.io/bootstrap-datepicker/?markup=component&format=&weekStart=&startDate=&endDate=&startView=0&minViewMode=0&maxViewMode=4&todayBtn=false&clearBtn=false&language=en&orientation=auto&multidate=&multidateSeparator=&KeyboardNavigation=on#sandbox", ((string[])(null)));
 #line hidden
         }
@@ -318,14 +306,14 @@ this.DatepickerExternalEnterVersion2("Component no forceparse", "11/11/2000", "/
         public virtual void ExternalEnter(string name, string id, string entry, string expected, string[] exampleTags)
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("external enter", null, exampleTags);
-#line 37
+#line 31
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
-#line 38
+#line 32
  testRunner.Given("navigated to \'https://igorescobar.github.io/jQuery-Mask-Plugin/\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 39
+#line 33
  testRunner.When(string.Format("using javascript setting \'{0}\' for element \'{1}\'", entry, id), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 40
+#line 34
  testRunner.Then(string.Format("the element \'{0}\' has the value \'{1}\'", id, expected), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -341,7 +329,7 @@ this.ScenarioInitialize(scenarioInfo);
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:expected", "11/11/2000")]
         public virtual void ExternalEnter_Date()
         {
-#line 37
+#line 31
 this.ExternalEnter("Date", "#date", "11/11/2000", "11/11/2000", ((string[])(null)));
 #line hidden
         }
@@ -356,7 +344,7 @@ this.ExternalEnter("Date", "#date", "11/11/2000", "11/11/2000", ((string[])(null
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:expected", "01/01/2000")]
         public virtual void ExternalEnter_DateZeroPadded()
         {
-#line 37
+#line 31
 this.ExternalEnter("Date             zero padded", "#date", "01/01/2000", "01/01/2000", ((string[])(null)));
 #line hidden
         }
@@ -371,7 +359,7 @@ this.ExternalEnter("Date             zero padded", "#date", "01/01/2000", "01/01
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:expected", "11:11:11")]
         public virtual void ExternalEnter_Hour()
         {
-#line 37
+#line 31
 this.ExternalEnter("Hour", "#time", "11:11:11", "11:11:11", ((string[])(null)));
 #line hidden
         }
@@ -386,7 +374,7 @@ this.ExternalEnter("Hour", "#time", "11:11:11", "11:11:11", ((string[])(null)));
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:expected", "11/11/2000 11:11:11")]
         public virtual void ExternalEnter_DateHour()
         {
-#line 37
+#line 31
 this.ExternalEnter("Date & Hour", "#date_time", "11/11/2000 11:11:11", "11/11/2000 11:11:11", ((string[])(null)));
 #line hidden
         }
@@ -401,7 +389,7 @@ this.ExternalEnter("Date & Hour", "#date_time", "11/11/2000 11:11:11", "11/11/20
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:expected", "80202")]
         public virtual void ExternalEnter_ZIPCode()
         {
-#line 37
+#line 31
 this.ExternalEnter("ZIP Code", "#cep", "80202", "80202", ((string[])(null)));
 #line hidden
         }
@@ -416,7 +404,7 @@ this.ExternalEnter("ZIP Code", "#cep", "80202", "80202", ((string[])(null)));
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:expected", "80202")]
         public virtual void ExternalEnter_WithCallbacksOpenConsole()
         {
-#line 37
+#line 31
 this.ExternalEnter("With Callbacks (open console)", "#cep_with_callback", "80202", "80202", ((string[])(null)));
 #line hidden
         }
@@ -431,7 +419,7 @@ this.ExternalEnter("With Callbacks (open console)", "#cep_with_callback", "80202
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:expected", "8020211")]
         public virtual void ExternalEnter_CrazyZipCode()
         {
-#line 37
+#line 31
 this.ExternalEnter("Crazy Zip Code", "#crazy_cep", "8020211", "8020211", ((string[])(null)));
 #line hidden
         }
@@ -446,7 +434,7 @@ this.ExternalEnter("Crazy Zip Code", "#crazy_cep", "8020211", "8020211", ((strin
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:expected", "123456")]
         public virtual void ExternalEnter_Money()
         {
-#line 37
+#line 31
 this.ExternalEnter("Money", "#money", "123456", "123456", ((string[])(null)));
 #line hidden
         }
@@ -461,7 +449,7 @@ this.ExternalEnter("Money", "#money", "123456", "123456", ((string[])(null)));
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:expected", "01012000")]
         public virtual void ExternalEnter_MaskPlaceholderOption()
         {
-#line 37
+#line 31
 this.ExternalEnter("Mask placeholder option", "#placeholder", "01012000", "01012000", ((string[])(null)));
 #line hidden
         }
@@ -476,7 +464,7 @@ this.ExternalEnter("Mask placeholder option", "#placeholder", "01012000", "01012
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:expected", "1234567")]
         public virtual void ExternalEnter_Telephone()
         {
-#line 37
+#line 31
 this.ExternalEnter("Telephone", "#phone", "1234567", "1234567", ((string[])(null)));
 #line hidden
         }
@@ -491,7 +479,7 @@ this.ExternalEnter("Telephone", "#phone", "1234567", "1234567", ((string[])(null
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:expected", "1234567890")]
         public virtual void ExternalEnter_TelephoneWithCodeArea()
         {
-#line 37
+#line 31
 this.ExternalEnter("Telephone with Code Area", "#phone_with_ddd", "1234567890", "1234567890", ((string[])(null)));
 #line hidden
         }
@@ -506,7 +494,7 @@ this.ExternalEnter("Telephone with Code Area", "#phone_with_ddd", "1234567890", 
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:expected", "1234567890")]
         public virtual void ExternalEnter_USTelephone()
         {
-#line 37
+#line 31
 this.ExternalEnter("US Telephone", "#phone_us", "1234567890", "1234567890", ((string[])(null)));
 #line hidden
         }
@@ -521,7 +509,7 @@ this.ExternalEnter("US Telephone", "#phone_us", "1234567890", "1234567890", ((st
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:expected", "1234567890")]
         public virtual void ExternalEnter_SaoPauloCelphones()
         {
-#line 37
+#line 31
 this.ExternalEnter("São Paulo Celphones", "#sp_celphones", "1234567890", "1234567890", ((string[])(null)));
 #line hidden
         }
@@ -536,7 +524,7 @@ this.ExternalEnter("São Paulo Celphones", "#sp_celphones", "1234567890", "12345
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:expected", "123456a")]
         public virtual void ExternalEnter_MixedTypeMask()
         {
-#line 37
+#line 31
 this.ExternalEnter("Mixed Type Mask", "#mixed", "123456a", "123456a", ((string[])(null)));
 #line hidden
         }
@@ -551,7 +539,7 @@ this.ExternalEnter("Mixed Type Mask", "#mixed", "123456a", "123456a", ((string[]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:expected", "1234567890")]
         public virtual void ExternalEnter_CPF()
         {
-#line 37
+#line 31
 this.ExternalEnter("CPF", "#cpf", "1234567890", "1234567890", ((string[])(null)));
 #line hidden
         }
@@ -566,7 +554,7 @@ this.ExternalEnter("CPF", "#cpf", "1234567890", "1234567890", ((string[])(null))
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:expected", "1234567890")]
         public virtual void ExternalEnter_CNPJ()
         {
-#line 37
+#line 31
 this.ExternalEnter("CNPJ", "#cnpj", "1234567890", "1234567890", ((string[])(null)));
 #line hidden
         }
@@ -581,7 +569,7 @@ this.ExternalEnter("CNPJ", "#cnpj", "1234567890", "1234567890", ((string[])(null
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:expected", "123123123123")]
         public virtual void ExternalEnter_IPAddress()
         {
-#line 37
+#line 31
 this.ExternalEnter("IP Address", "#ip_address", "123123123123", "123123123123", ((string[])(null)));
 #line hidden
         }
@@ -596,7 +584,7 @@ this.ExternalEnter("IP Address", "#ip_address", "123123123123", "123123123123", 
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:expected", "01012000")]
         public virtual void ExternalEnter_WithClearIfNotMatchOption()
         {
-#line 37
+#line 31
 this.ExternalEnter("With Clear If Not Match Option", "#clear-if-not-match", "01012000", "01012000", ((string[])(null)));
 #line hidden
         }
@@ -611,7 +599,7 @@ this.ExternalEnter("With Clear If Not Match Option", "#clear-if-not-match", "010
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:expected", "01012000")]
         public virtual void ExternalEnter_WithAFallbackDigit()
         {
-#line 37
+#line 31
 this.ExternalEnter("With a fallback digit", "#fallback", "01012000", "01012000", ((string[])(null)));
 #line hidden
         }
@@ -626,7 +614,7 @@ this.ExternalEnter("With a fallback digit", "#fallback", "01012000", "01012000",
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:expected", "01012000")]
         public virtual void ExternalEnter_WithSelectOnFocus()
         {
-#line 37
+#line 31
 this.ExternalEnter("With selectOnFocus", "#selectonfocus", "01012000", "01012000", ((string[])(null)));
 #line hidden
         }

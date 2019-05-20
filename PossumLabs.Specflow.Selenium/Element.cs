@@ -113,12 +113,12 @@ namespace PossumLabs.Specflow.Selenium
 
         public void ScriptClear()
         {
-            ((LoggingWebDriver)WebDriver).ScriptClear(Id);
+            ((LoggingWebDriver)WebDriver).ScriptClear(WebElement);
         }
 
         public void ScriptSet(string val)
         {
-            ((LoggingWebDriver)WebDriver).ScriptSet(Id, val);
+            ((LoggingWebDriver)WebDriver).ScriptSet(WebElement, val);
         }
 
         protected bool Equivalent(string actual, string desired)

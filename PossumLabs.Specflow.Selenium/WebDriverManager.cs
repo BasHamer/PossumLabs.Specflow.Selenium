@@ -47,7 +47,15 @@ namespace PossumLabs.Specflow.Selenium
 
         public List<byte[]> Screenshots { get; }
 
-        public Func<RemoteWebDriver> WebDriverFactory { get; set; }
+        public Func<RemoteWebDriver> WebDriverFactory { get
+            {
+                if (_WebDriverFactory == null)
+                    throw new Exception("The WebDriverFactory needs to be set on WebDriverManager.");
+                return _WebDriverFactory;
+            }
+            set => _WebDriverFactory = value; }
+
+        private Func<RemoteWebDriver> _WebDriverFactory { get; set; }
 
         public IWebDriver Create() 
         {
