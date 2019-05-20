@@ -20,7 +20,7 @@ namespace PossumLabs.Specflow.Selenium
     {
         public LoggingWebDriver(IWebDriver driver, MovieLogger movieLogger)
         {
-            Driver = driver;
+            SeleniumDriver = driver;
             Messages = new List<string>();
             Screenshots = new List<Screenshot>();
             MovieLogger = movieLogger;
@@ -30,45 +30,57 @@ namespace PossumLabs.Specflow.Selenium
         private MovieLogger MovieLogger { get; }
         public List<Screenshot> Screenshots { get; }
 
-        public string Url { get => Driver.Url; set => Driver.Url = value; }
+        public string Url { get => SeleniumDriver.Url; set => SeleniumDriver.Url = value; }
 
-        public string Title => Driver.Title;
+        public string Title => SeleniumDriver.Title;
 
-        public string PageSource => Driver.PageSource;
+        public string PageSource => SeleniumDriver.PageSource;
 
-        public string CurrentWindowHandle => Driver.CurrentWindowHandle;
+        public string CurrentWindowHandle => SeleniumDriver.CurrentWindowHandle;
 
-        public ReadOnlyCollection<string> WindowHandles => Driver.WindowHandles;
+        public ReadOnlyCollection<string> WindowHandles => SeleniumDriver.WindowHandles;
 
 #pragma warning disable CS0618 // Type or member is obsolete
-        private IHasInputDevices HasInputDevices => (IHasInputDevices)Driver;
+        private IHasInputDevices HasInputDevices => (IHasInputDevices)SeleniumDriver;
         public IKeyboard Keyboard => HasInputDevices.Keyboard;
         public IMouse Mouse => HasInputDevices.Mouse;
 #pragma warning restore CS0618 // Type or member is obsolete
 
-        private IActionExecutor ActionExecutor => (IActionExecutor)Driver;
+        private IActionExecutor ActionExecutor => (IActionExecutor)SeleniumDriver;
         public bool IsActionExecutor => ActionExecutor.IsActionExecutor;
 
-        private IWebDriver Driver;
+        private IWebDriver SeleniumDriver;
         public string GetLogs() => Messages.Where(x => !string.IsNullOrEmpty(x)).LogFormat();
 
-        public void Close() => Driver.Close();
+        public void Close() => SeleniumDriver.Close();
 
-        public void Quit() => Driver.Quit();
+        public void Quit() => SeleniumDriver.Quit();
 
-        public IOptions Manage() => Driver.Manage();
+        public IOptions Manage() => SeleniumDriver.Manage();
 
-        public INavigation Navigate() => Driver.Navigate();
+        public INavigation Navigate() => SeleniumDriver.Navigate();
 
-        public ITargetLocator SwitchTo() => Driver.SwitchTo();
+        public ITargetLocator SwitchTo() => SeleniumDriver.SwitchTo();
 
         public IWebElement FindElement(By by)
         {
             Messages.Add(by.ToString());
-            var element = Driver.FindElement(by);
+            var element = SeleniumDriver.FindElement(by);
             if (element != null && by.ToString().StartsWith("By.XPath: "))
                 VisualLog(by);
             return element;
+        }
+
+        private IJavaScriptExecutor ScriptExecutor
+        {
+            get
+            {
+                var scriptExecutor = SeleniumDriver as IJavaScriptExecutor;
+                if (scriptExecutor == null)
+                    throw new Exception("this webdriver does not support script executon.");
+
+                return scriptExecutor;
+            }
         }
 
         public ReadOnlyCollection<IWebElement> FindElements(By by)
@@ -77,7 +89,7 @@ namespace PossumLabs.Specflow.Selenium
             {
                 Messages.Add(by.ToString());
             }
-            var elements = Driver.FindElements(by);
+            var elements = SeleniumDriver.FindElements(by);
             if (elements != null && elements.Any() && by.ToString().StartsWith("By.XPath: "))
                 VisualLog(by);
             return elements;
@@ -102,10 +114,10 @@ namespace PossumLabs.Specflow.Selenium
             }
         }
 
-        public void Dispose() => Driver.Dispose();
+        public void Dispose() => SeleniumDriver.Dispose();
 
         public Screenshot GetScreenshot()
-            => ((ITakesScreenshot)Driver).GetScreenshot();
+            => ((ITakesScreenshot)SeleniumDriver).GetScreenshot();
 
         //HACK: wrong place for this code
         private Screenshot Preview(string xpath)
@@ -136,7 +148,7 @@ var css = new function()
 
 css.insert( '*['+arguments[0]+'] { outline: DarkOrange dashed 2px; }');
 ";
-            ((IJavaScriptExecutor)Driver).ExecuteScript(s_Script, id);
+            ScriptExecutor.ExecuteScript(s_Script, id);
 
             //mark items
 
@@ -148,7 +160,7 @@ for (var i=0 ; i<nodesSnapshot.snapshotLength; i++ )
   nodesSnapshot.snapshotItem(i).setAttribute(arguments[0], i);
 }
 ";
-            ((IJavaScriptExecutor)Driver).ExecuteScript(s_Script, id, xpath);
+            ScriptExecutor.ExecuteScript(s_Script, id, xpath);
             var screenshot = GetScreenshot();
             //remove style
             s_Script = @"
@@ -156,7 +168,7 @@ let sheet = document.styleSheets[document.styleSheets.length - 1];
 let index = sheet.rules.length-1;
 sheet.deleteRule(index);
 ";
-            ((IJavaScriptExecutor)Driver).ExecuteScript(s_Script, id);
+            ScriptExecutor.ExecuteScript(s_Script, id);
             //unmark
             s_Script = @"
 var nodesSnapshot = document.evaluate('//*[@'+arguments[0]+']', document, null, XPathResult.ORDERED_NODE_SNAPSHOT_TYPE, null);
@@ -166,7 +178,7 @@ for (var i=0 ; i<nodesSnapshot.snapshotLength; i++ )
   nodesSnapshot.snapshotItem(i).removeAttribute(arguments[0]);
 }
 ";
-            ((IJavaScriptExecutor)Driver).ExecuteScript(s_Script, id);
+            ScriptExecutor.ExecuteScript(s_Script, id);
             return screenshot;
         }
             
@@ -181,7 +193,7 @@ for (var i=0 ; i<nodesSnapshot.snapshotLength; i++ )
             {
                 String s_Script = "return document.elementFromPoint(arguments[0], arguments[1]);";
 
-                RemoteWebElement i_Elem = ((IJavaScriptExecutor)Driver).ExecuteScript(s_Script, X, Y) as RemoteWebElement;
+                RemoteWebElement i_Elem = ScriptExecutor.ExecuteScript(s_Script, X, Y) as RemoteWebElement;
                 if (i_Elem == null)
                     return null;
 
@@ -192,7 +204,7 @@ for (var i=0 ; i<nodesSnapshot.snapshotLength; i++ )
                 X -= p_Pos.X;
                 Y -= p_Pos.Y;
 
-                Driver.SwitchTo().Frame(i_Elem);
+                SeleniumDriver.SwitchTo().Frame(i_Elem);
             }
         }
 
@@ -218,7 +230,7 @@ for (var i=0 ; i<nodesSnapshot.snapshotLength; i++ )
                             + "} "
                             + "return new Array(X, Y);";
 
-            IList<Object> i_Coord = (IList<Object>)((IJavaScriptExecutor)Driver).ExecuteScript(s_Script);
+            IList<Object> i_Coord = (IList<Object>)ScriptExecutor.ExecuteScript(s_Script);
 
             int s32_ScrollX = Convert.ToInt32(i_Coord[0]);
             int s32_ScrollY = Convert.ToInt32(i_Coord[1]);
@@ -239,8 +251,7 @@ for (var i=0 ; i<nodesSnapshot.snapshotLength; i++ )
 
         public void ScriptSet(IWebElement e, string val)
         {
-            var jsDriver = Driver as IJavaScriptExecutor;
-            var r = jsDriver.ExecuteScript(@"
+            var r = ScriptExecutor.ExecuteScript(@"
 try{
     var i = $(arguments[1]);
     i.val(arguments[0]);
@@ -253,6 +264,7 @@ return err
             if (r?.ToString() != val)
                 throw new Exception(r.ToString());
         }
+
 
     }
 }
