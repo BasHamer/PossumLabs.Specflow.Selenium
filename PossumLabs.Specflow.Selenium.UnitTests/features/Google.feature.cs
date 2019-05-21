@@ -44,8 +44,7 @@ namespace PossumLabs.Specflow.Selenium.Integration.Features
         public static void FeatureSetup(Microsoft.VisualStudio.TestTools.UnitTesting.TestContext testContext)
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en"), "Google", null, ProgrammingLanguage.CSharp, new string[] {
-                        "SingleBrowser"});
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en"), "Google", null, ProgrammingLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -91,7 +90,6 @@ namespace PossumLabs.Specflow.Selenium.Integration.Features
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("google something")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Google")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("SingleBrowser")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("scenarioAttribute")]
         public virtual void GoogleSomething()
         {
@@ -115,7 +113,6 @@ this.ScenarioInitialize(scenarioInfo);
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("google failed")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Google")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("SingleBrowser")]
         public virtual void GoogleFailed()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("google failed", null, ((string[])(null)));

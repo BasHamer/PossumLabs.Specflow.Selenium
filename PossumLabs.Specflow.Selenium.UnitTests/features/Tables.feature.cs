@@ -45,7 +45,6 @@ namespace PossumLabs.Specflow.Selenium.Integration.Features
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
             TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en"), "Table Selectors", null, ProgrammingLanguage.CSharp, new string[] {
-                        "SingleBrowser",
                         "injected-html"});
             testRunner.OnFeatureStart(featureInfo);
         }
@@ -127,7 +126,6 @@ this.ScenarioInitialize(scenarioInfo);
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Entering data into table: th simple text input")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Table Selectors")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("SingleBrowser")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("injected-html")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "th simple text input")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:description", "th simple text input")]
@@ -146,7 +144,6 @@ this.EnteringDataIntoTable("th simple text input", "target", "Bob", "<tr><th>Key
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Entering data into table: td simple text input")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Table Selectors")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("SingleBrowser")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("injected-html")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "td simple text input")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:description", "td simple text input")]
@@ -200,7 +197,6 @@ this.ScenarioInitialize(scenarioInfo);
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Finding propper cells in tables: th simple text input")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Table Selectors")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("SingleBrowser")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("injected-html")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "th simple text input")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:description", "th simple text input")]
@@ -219,7 +215,6 @@ this.FindingPropperCellsInTables("th simple text input", "target", "Bob", "<tr><
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Finding propper cells in tables: th noise text input")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Table Selectors")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("SingleBrowser")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("injected-html")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "th noise text input")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:description", "th noise text input")]
@@ -238,7 +233,6 @@ this.FindingPropperCellsInTables("th noise text input", "target", "Bob", "<tr><t
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Failed match")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Table Selectors")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("SingleBrowser")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("injected-html")]
         public virtual void FailedMatch()
         {

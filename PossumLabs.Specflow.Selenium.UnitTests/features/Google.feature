@@ -1,4 +1,4 @@
-﻿@SingleBrowser
+﻿
 Feature: Google
 
 @scenarioAttribute

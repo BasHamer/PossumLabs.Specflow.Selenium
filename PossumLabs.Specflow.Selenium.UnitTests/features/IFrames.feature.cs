@@ -45,7 +45,6 @@ namespace PossumLabs.Specflow.Selenium.Integration.Features
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
             TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en"), "IFrames", null, ProgrammingLanguage.CSharp, new string[] {
-                        "SingleBrowser",
                         "injected-html"});
             testRunner.OnFeatureStart(featureInfo);
         }
@@ -91,14 +90,7 @@ namespace PossumLabs.Specflow.Selenium.Integration.Features
         
         public virtual void Under(string description, string under, string target, string value, string html, string[] exampleTags)
         {
-            string[] @__tags = new string[] {
-                    "ignore",
-                    "bug"};
-            if ((exampleTags != null))
-            {
-                @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
-            }
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Under", null, @__tags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Under", null, exampleTags);
 #line 5
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
@@ -120,10 +112,7 @@ this.ScenarioInitialize(scenarioInfo);
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Under: 01 simple")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "IFrames")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("SingleBrowser")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("injected-html")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.IgnoreAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("bug")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "01 simple")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:description", "01 simple")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:under", "under-target")]
@@ -139,14 +128,7 @@ this.Under("01 simple", "under-target", "input-target", "Bob", "<div>under-targe
         
         public virtual void TableRow(string description, string row, string target, string value, string html, string[] exampleTags)
         {
-            string[] @__tags = new string[] {
-                    "ignore",
-                    "bug"};
-            if ((exampleTags != null))
-            {
-                @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
-            }
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("table row", null, @__tags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("table row", null, exampleTags);
 #line 17
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
@@ -168,10 +150,7 @@ this.ScenarioInitialize(scenarioInfo);
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("table row: 01 simple")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "IFrames")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("SingleBrowser")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("injected-html")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.IgnoreAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("bug")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "01 simple")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:description", "01 simple")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:row", "row1")]
@@ -211,7 +190,6 @@ this.ScenarioInitialize(scenarioInfo);
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("entering text inputs: input for")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "IFrames")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("SingleBrowser")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("injected-html")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "input for")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:description", "input for")]
@@ -249,7 +227,6 @@ this.ScenarioInitialize(scenarioInfo);
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("entering number inputs: for")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "IFrames")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("SingleBrowser")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("injected-html")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "for")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:description", "for")]
@@ -287,7 +264,6 @@ this.ScenarioInitialize(scenarioInfo);
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("entering dropdown inputs: n for")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "IFrames")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("SingleBrowser")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("injected-html")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "n for")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:description", "n for")]
@@ -327,7 +303,6 @@ this.ScenarioInitialize(scenarioInfo);
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("entering radio: value")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "IFrames")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("SingleBrowser")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("injected-html")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "value")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:description", "value")]
@@ -365,7 +340,6 @@ this.ScenarioInitialize(scenarioInfo);
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("clicking: 0   a text")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "IFrames")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("SingleBrowser")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("injected-html")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("VariantName", "0   a text")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("Parameter:description", "0   a text")]

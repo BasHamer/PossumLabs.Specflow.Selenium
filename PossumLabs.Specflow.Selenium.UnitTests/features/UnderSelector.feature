@@ -1,4 +1,4 @@
-﻿@SingleBrowser @injected-html
+﻿ @injected-html
 Feature: UnderSelector
 
 Scenario Outline: Div 

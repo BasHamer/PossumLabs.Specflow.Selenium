@@ -1,4 +1,4 @@
-﻿@SingleBrowser @injected-html
+﻿ @injected-html
 Feature: Row Selector
 
 Scenario Outline: table row

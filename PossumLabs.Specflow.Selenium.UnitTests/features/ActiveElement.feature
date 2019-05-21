@@ -1,4 +1,4 @@
-﻿@SingleBrowser @injected-html
+﻿ @injected-html
 Feature: Selectors
 
 Scenario Outline: entering text inputs

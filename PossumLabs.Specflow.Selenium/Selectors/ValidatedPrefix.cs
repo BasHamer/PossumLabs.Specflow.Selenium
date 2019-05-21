@@ -12,6 +12,8 @@ namespace PossumLabs.Specflow.Selenium.Selectors
         }
 
         private IEnumerable<string> Xpaths {get;set;}
+        public bool IsInitialized { get => Xpaths?.Any() == true; }
+
         internal void Init(string v, IEnumerable<string> valid)
             => Xpaths = valid;
 

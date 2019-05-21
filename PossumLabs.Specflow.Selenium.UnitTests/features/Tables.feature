@@ -1,4 +1,4 @@
-﻿@SingleBrowser @injected-html
+﻿ @injected-html
 Feature: Table Selectors
 
 Scenario Outline: Entering data into table

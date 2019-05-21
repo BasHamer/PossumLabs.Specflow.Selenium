@@ -418,10 +418,27 @@ namespace PossumLabs.Specflow.Selenium
             var possibles = l.CrossMultiply(); 
             RetryExecutor.RetryFor(() =>
                {
+                   var iframes = SeleniuimDriver.FindElements(By.XPath("//iframe"));
                    var valid = possibles.AsParallel().AsOrdered().Where(xpath => SeleniuimDriver.FindElements(By.XPath(xpath)).Any()).ToList();
                    if (valid.Any())
                        p.Init("filtered", valid);
-                   else
+                   else if (iframes.Any())
+                   {
+                       foreach (var iframe in iframes)
+                       {
+                           try
+                           {
+                               SeleniuimDriver.SwitchTo().Frame(iframe);
+                               valid = possibles.AsParallel().AsOrdered().Where(xpath => SeleniuimDriver.FindElements(By.XPath(xpath)).Any()).ToList();
+                               if (valid.Any())
+                                   p.Init("filtered", valid);
+                           }
+                           catch
+                           { }
+                       }
+                       SeleniuimDriver.SwitchTo().DefaultContent();
+                   }
+                   if(!p.IsInitialized)
                        throw new Exception($"Was unable to find any that matched prefix, tried:{possibles.LogFormat()}");
                }, TimeSpan.FromMilliseconds(SeleniumGridConfiguration.RetryMs));
 
