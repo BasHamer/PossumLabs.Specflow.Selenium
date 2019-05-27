@@ -15,7 +15,7 @@ using System.Diagnostics;
 namespace PossumLabs.Specflow.Selenium
 {
 #pragma warning disable CS0618 // Type or member is obsolete, 3rd party reference
-    public class LoggingWebDriver : IWebDriver, ITakesScreenshot, IHasInputDevices, IActionExecutor
+    public class LoggingWebDriver : IWebDriver, ITakesScreenshot, IHasInputDevices, IActionExecutor, IJavaScriptExecutor
 #pragma warning restore CS0618 // Type or member is obsolete
     {
         public LoggingWebDriver(IWebDriver driver, MovieLogger movieLogger)
@@ -247,24 +247,14 @@ for (var i=0 ; i<nodesSnapshot.snapshotLength; i++ )
         => ActionExecutor.ResetInputState();
 
         public void ScriptClear(IWebElement e)
-            => ScriptSet(e, "");
-
+            => ScriptExecutor.ScriptClear(e);
         public void ScriptSet(IWebElement e, string val)
-        {
-            var r = ScriptExecutor.ExecuteScript(@"
-try{
-    var i = $(arguments[1]);
-    i.val(arguments[0]);
-    i.trigger( 'change' );
-    return  i.val();
-}
-catch(err) {
-return err
-}", val, e);
-            if (r?.ToString() != val)
-                throw new Exception(r.ToString());
-        }
+            => ScriptExecutor.ScriptSet(e, val);
 
+        object IJavaScriptExecutor.ExecuteScript(string script, params object[] args)
+            => ScriptExecutor.ExecuteScript(script, args);
 
+        object IJavaScriptExecutor.ExecuteAsyncScript(string script, params object[] args)
+            => ScriptExecutor.ExecuteAsyncScript(script, args);
     }
 }

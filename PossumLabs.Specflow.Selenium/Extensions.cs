@@ -58,5 +58,24 @@ namespace PossumLabs.Specflow.Selenium
                 return null;
             }
         }
+
+        public static void ScriptClear(this IJavaScriptExecutor ScriptExecutor, IWebElement e)
+           => ScriptExecutor.ScriptSet(e, "");
+
+        public static void ScriptSet(this IJavaScriptExecutor ScriptExecutor, IWebElement e, string val)
+        {
+            var r = ScriptExecutor.ExecuteScript(@"
+try{
+    var i = $(arguments[1]);
+    i.val(arguments[0]);
+    i.trigger( 'change' );
+    return  i.val();
+}
+catch(err) {
+return err
+}", val, e);
+            if (r?.ToString() != val)
+                throw new Exception(r.ToString());
+        }
     }
 }

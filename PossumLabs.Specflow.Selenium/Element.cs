@@ -111,15 +111,23 @@ namespace PossumLabs.Specflow.Selenium
             }
         }
 
-        public void ScriptClear()
+        private IJavaScriptExecutor ScriptExecutor
         {
-            ((LoggingWebDriver)WebDriver).ScriptClear(WebElement);
+            get
+            {
+                var scriptExecutor = WebDriver as IJavaScriptExecutor;
+                if (scriptExecutor == null)
+                    throw new Exception("this webdriver does not support script executon.");
+
+                return scriptExecutor;
+            }
         }
 
-        public void ScriptSet(string val)
-        {
-            ((LoggingWebDriver)WebDriver).ScriptSet(WebElement, val);
-        }
+        public void ScriptClear()
+            => ScriptExecutor.ScriptClear(WebElement);
+
+        public void ScriptSet( string val)
+             => ScriptExecutor.ScriptSet(WebElement, val);
 
         protected bool Equivalent(string actual, string desired)
         {
