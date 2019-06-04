@@ -46,12 +46,15 @@ namespace PossumLabs.Specflow.Selenium
   
         public virtual void Enter(string text)
         {
-            // optimisting setting
-            WebElement.Click();
-            Thread.Sleep(100);
-            WebElement.SendKeys(text);
-            if (WebElement.GetAttribute("type") == "file" || Equivalent(WebElement.GetAttribute("value"), text))
-                return;
+            if (!string.IsNullOrWhiteSpace(text))
+            {
+                // optimisting setting
+                WebElement.Click();
+                Thread.Sleep(100);
+                WebElement.SendKeys(text);
+                if (WebElement.GetAttribute("type") == "file" || Equivalent(WebElement.GetAttribute("value"), text))
+                    return;
+            }
 
             // clear and set
             try
