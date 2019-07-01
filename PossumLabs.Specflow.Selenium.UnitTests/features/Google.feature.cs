@@ -126,12 +126,12 @@ this.ScenarioInitialize(scenarioInfo);
 #line 14
  testRunner.When("clicking the element \'Bob\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-            TechTalk.SpecFlow.Table table16 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table21 = new TechTalk.SpecFlow.Table(new string[] {
                         "Message"});
-            table16.AddRow(new string[] {
+            table21.AddRow(new string[] {
                         "/.*Google Search.*/"});
 #line 15
- testRunner.Then("the Error has values", ((string)(null)), table16, "Then ");
+ testRunner.Then("the Error has values", ((string)(null)), table21, "Then ");
 #line hidden
             this.ScenarioCleanup();
         }

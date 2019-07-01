@@ -94,12 +94,12 @@ namespace PossumLabs.Specflow.Selenium.Integration.Features
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
 #line hidden
-            TechTalk.SpecFlow.Table table9 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table14 = new TechTalk.SpecFlow.Table(new string[] {
                         "Html"});
-            table9.AddRow(new string[] {
+            table14.AddRow(new string[] {
                         string.Format("{0}", html)});
 #line 4
- testRunner.Given("injecting browser content", ((string)(null)), table9, "Given ");
+ testRunner.Given("injecting browser content", ((string)(null)), table14, "Given ");
 #line 7
  testRunner.When(string.Format("checking element \'{0}\'", target), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 8
@@ -194,12 +194,12 @@ this.CheckingInputs("checked", "target", "checked", "<label>target<input type=\"
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
 #line hidden
-            TechTalk.SpecFlow.Table table10 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table15 = new TechTalk.SpecFlow.Table(new string[] {
                         "Html"});
-            table10.AddRow(new string[] {
+            table15.AddRow(new string[] {
                         string.Format("{0}", html)});
 #line 19
- testRunner.Given("injecting browser content", ((string)(null)), table10, "Given ");
+ testRunner.Given("injecting browser content", ((string)(null)), table15, "Given ");
 #line 22
  testRunner.When(string.Format("unchecking element \'{0}\'", target), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 23
@@ -245,23 +245,23 @@ this.UncheckingInputs("unchecking  checked", "target", "unchecked", "<label>targ
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
 #line hidden
-            TechTalk.SpecFlow.Table table11 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table16 = new TechTalk.SpecFlow.Table(new string[] {
                         "Html"});
-            table11.AddRow(new string[] {
+            table16.AddRow(new string[] {
                         string.Format("{0}", html)});
 #line 30
- testRunner.Given("injecting browser content", ((string)(null)), table11, "Given ");
+ testRunner.Given("injecting browser content", ((string)(null)), table16, "Given ");
 #line 33
  testRunner.Given("an error is expected", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 34
  testRunner.When(string.Format("checking element \'{0}\'", target), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-            TechTalk.SpecFlow.Table table12 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table17 = new TechTalk.SpecFlow.Table(new string[] {
                         "Message"});
-            table12.AddRow(new string[] {
+            table17.AddRow(new string[] {
                         string.Format("{0}", error)});
 #line 35
- testRunner.Then("the Error has values", ((string)(null)), table12, "Then ");
+ testRunner.Then("the Error has values", ((string)(null)), table17, "Then ");
 #line hidden
             this.ScenarioCleanup();
         }
@@ -289,23 +289,23 @@ this.ErrorMessagesChecking("value", "target", "checked", "<label>target<input></
  this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
 #line hidden
-            TechTalk.SpecFlow.Table table13 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table18 = new TechTalk.SpecFlow.Table(new string[] {
                         "Html"});
-            table13.AddRow(new string[] {
+            table18.AddRow(new string[] {
                         string.Format("{0}", html)});
 #line 43
- testRunner.Given("injecting browser content", ((string)(null)), table13, "Given ");
+ testRunner.Given("injecting browser content", ((string)(null)), table18, "Given ");
 #line 46
  testRunner.Given("an error is expected", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 47
  testRunner.When(string.Format("unchecking element \'{0}\'", target), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-            TechTalk.SpecFlow.Table table14 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table19 = new TechTalk.SpecFlow.Table(new string[] {
                         "Message"});
-            table14.AddRow(new string[] {
+            table19.AddRow(new string[] {
                         string.Format("{0}", error)});
 #line 48
- testRunner.Then("the Error has values", ((string)(null)), table14, "Then ");
+ testRunner.Then("the Error has values", ((string)(null)), table19, "Then ");
 #line hidden
             this.ScenarioCleanup();
         }

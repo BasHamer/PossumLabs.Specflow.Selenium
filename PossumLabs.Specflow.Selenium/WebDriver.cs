@@ -248,10 +248,10 @@ namespace PossumLabs.Specflow.Selenium
                 }
             }, TimeSpan.FromMilliseconds(SeleniumGridConfiguration.RetryMs));
 
-        public void DismissAllert()
+        public void DismissAlert()
             => SeleniuimDriver.SwitchTo().Alert().Dismiss();
 
-        public void AcceptAllert()
+        public void AcceptAlert()
             => SeleniuimDriver.SwitchTo().Alert().Accept();
 
         private class Wrapper

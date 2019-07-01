@@ -94,12 +94,12 @@ namespace PossumLabs.Specflow.Selenium.Integration.Features
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
 #line hidden
-            TechTalk.SpecFlow.Table table15 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table20 = new TechTalk.SpecFlow.Table(new string[] {
                         "Html"});
-            table15.AddRow(new string[] {
+            table20.AddRow(new string[] {
                         string.Format("{0}", html)});
 #line 4
- testRunner.Given("injecting browser content", ((string)(null)), table15, "Given ");
+ testRunner.Given("injecting browser content", ((string)(null)), table20, "Given ");
 #line 7
  testRunner.When(string.Format("entering \'{0}\' into element \'{1}\'", value, target), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 8

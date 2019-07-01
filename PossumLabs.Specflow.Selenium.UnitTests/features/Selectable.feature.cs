@@ -94,12 +94,12 @@ namespace PossumLabs.Specflow.Selenium.Integration.Features
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
 #line hidden
-            TechTalk.SpecFlow.Table table26 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table31 = new TechTalk.SpecFlow.Table(new string[] {
                         "Html"});
-            table26.AddRow(new string[] {
+            table31.AddRow(new string[] {
                         string.Format("{0}", html)});
 #line 4
- testRunner.Given("injecting browser content", ((string)(null)), table26, "Given ");
+ testRunner.Given("injecting browser content", ((string)(null)), table31, "Given ");
 #line 7
  testRunner.When(string.Format("selecting \'{0}\' for element \'{1}\'", value, target), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 8
@@ -370,23 +370,23 @@ this.SelectingInputs("default name", "target", "Bob", "<select name=\"target\"><
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
 #line hidden
-            TechTalk.SpecFlow.Table table27 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table32 = new TechTalk.SpecFlow.Table(new string[] {
                         "Html"});
-            table27.AddRow(new string[] {
+            table32.AddRow(new string[] {
                         string.Format("{0}", html)});
 #line 28
- testRunner.Given("injecting browser content", ((string)(null)), table27, "Given ");
+ testRunner.Given("injecting browser content", ((string)(null)), table32, "Given ");
 #line 31
  testRunner.Given("an error is expected", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 32
  testRunner.When(string.Format("selecting \'{0}\' for element \'{1}\'", value, target), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-            TechTalk.SpecFlow.Table table28 = new TechTalk.SpecFlow.Table(new string[] {
+            TechTalk.SpecFlow.Table table33 = new TechTalk.SpecFlow.Table(new string[] {
                         "Message"});
-            table28.AddRow(new string[] {
+            table33.AddRow(new string[] {
                         string.Format("{0}", error)});
 #line 33
- testRunner.Then("the Error has values", ((string)(null)), table28, "Then ");
+ testRunner.Then("the Error has values", ((string)(null)), table33, "Then ");
 #line hidden
             this.ScenarioCleanup();
         }

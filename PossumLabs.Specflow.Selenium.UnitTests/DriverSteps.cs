@@ -60,7 +60,8 @@ namespace PossumLabs.Specflow.Selenium.Integration
         [AfterStep]
         public void Cleanup()
         {
-            if (WebDriverManager.IsInitialized && WebDriver != null) WebDriver.LeaveFrames();
+            if (WebDriverManager.IsInitialized && WebDriver != null && !WebDriver.HasAlert)
+                WebDriver.LeaveFrames();
         }
 
 
