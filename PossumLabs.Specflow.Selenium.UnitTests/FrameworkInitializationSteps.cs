@@ -61,7 +61,7 @@ namespace PossumLabs.Specflow.Selenium.Integration
             {
                 try
                 {
-                    FileManager.CreateFile(Encoding.UTF8.GetBytes(WebDriverManager.Current.PageSource), "source", "html");
+                    FileManager.PersistFile(Encoding.UTF8.GetBytes(WebDriverManager.Current.PageSource), "source", "html");
                 }
                 catch (UnhandledAlertException) { return; }
             }
@@ -89,7 +89,9 @@ namespace PossumLabs.Specflow.Selenium.Integration
             ObjectContainer.RegisterInstanceAs(configFactory.Create<ImageLoggingConfig>());
 
             ImageLogging = new ImageLogging(ObjectContainer.Resolve<ImageLoggingConfig>());
-            MovieLogger = new MovieLogger(ObjectContainer.Resolve<MovieLoggerConfig>(), Metadata);
+            Register(new FileManager(new DatetimeManager(() => DateTime.Now)));
+            FileManager.Initialize(FeatureContext.FeatureInfo.Title, ScenarioContext.ScenarioInfo.Title, null /*Specflow limitation*/);
+            MovieLogger = new MovieLogger(FileManager, ObjectContainer.Resolve<MovieLoggerConfig>(), Metadata);
 
             ObjectContainer.RegisterInstanceAs(ImageLogging);
             ObjectContainer.RegisterInstanceAs(MovieLogger);
@@ -104,8 +106,8 @@ namespace PossumLabs.Specflow.Selenium.Integration
                 this.ObjectFactory,
                 new SeleniumGridConfiguration()));
 
-            Register(new FileManager(new DatetimeManager() { Now = () => DateTime.Now }));
-            FileManager.Initialize(FeatureContext.FeatureInfo.Title, ScenarioContext.ScenarioInfo.Title, null /*Specflow limitation*/);
+            
+            
 
             var templateManager = new PossumLabs.Specflow.Core.Variables.TemplateManager();
             templateManager.Initialize(Assembly.GetExecutingAssembly());
@@ -121,6 +123,7 @@ namespace PossumLabs.Specflow.Selenium.Integration
             {
                 var options = new ChromeOptions();
 
+                //grid
                 options.AddAdditionalCapability("username", WebDriverManager.SeleniumGridConfiguration.Username, true);
                 options.AddAdditionalCapability("accessKey", WebDriverManager.SeleniumGridConfiguration.AccessKey, true);
 
