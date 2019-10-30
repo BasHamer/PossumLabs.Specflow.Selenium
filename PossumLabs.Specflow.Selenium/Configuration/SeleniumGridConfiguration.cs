@@ -26,8 +26,8 @@ namespace PossumLabs.Specflow.Selenium.Configuration
             AccessKey = config["seleniumGridAccessKey"];
         }
 
-        public string Url { get; }
-        public int RetryMs { get; }
+        public string Url { get; set; }
+        public int RetryMs { get; set; }
         public int Width { get; set; }
         public int Height { get; set; }
         public string Username { get; set; }
