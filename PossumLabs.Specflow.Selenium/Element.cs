@@ -49,8 +49,11 @@ namespace PossumLabs.Specflow.Selenium
             if (!string.IsNullOrWhiteSpace(text))
             {
                 // optimisting setting
-                WebElement.Click();
-                Thread.Sleep(100);
+                if (WebElement.GetAttribute("type") != "file")
+                {
+                    WebElement.Click();
+                    Thread.Sleep(100);
+                }
                 WebElement.SendKeys(text);
                 if (WebElement.GetAttribute("type") == "file" || Equivalent(WebElement.GetAttribute("value"), text))
                     return;
