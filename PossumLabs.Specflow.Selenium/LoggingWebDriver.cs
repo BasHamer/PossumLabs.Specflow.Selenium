@@ -15,7 +15,7 @@ using System.Diagnostics;
 namespace PossumLabs.Specflow.Selenium
 {
 #pragma warning disable CS0618 // Type or member is obsolete, 3rd party reference
-    public class LoggingWebDriver : IWebDriver, ITakesScreenshot, IHasInputDevices, IActionExecutor, IJavaScriptExecutor
+    public class LoggingWebDriver : IWebDriver, ITakesScreenshot, IActionExecutor, IJavaScriptExecutor
 #pragma warning restore CS0618 // Type or member is obsolete
     {
         public LoggingWebDriver(IWebDriver driver, MovieLogger movieLogger)
@@ -39,12 +39,6 @@ namespace PossumLabs.Specflow.Selenium
         public string CurrentWindowHandle => SeleniumDriver.CurrentWindowHandle;
 
         public ReadOnlyCollection<string> WindowHandles => SeleniumDriver.WindowHandles;
-
-#pragma warning disable CS0618 // Type or member is obsolete
-        private IHasInputDevices HasInputDevices => (IHasInputDevices)SeleniumDriver;
-        public IKeyboard Keyboard => HasInputDevices.Keyboard;
-        public IMouse Mouse => HasInputDevices.Mouse;
-#pragma warning restore CS0618 // Type or member is obsolete
 
         private IActionExecutor ActionExecutor => (IActionExecutor)SeleniumDriver;
         public bool IsActionExecutor => ActionExecutor.IsActionExecutor;

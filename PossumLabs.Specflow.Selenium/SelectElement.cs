@@ -75,7 +75,7 @@ namespace PossumLabs.Specflow.Selenium
                 }
                 else if (options.Many())
                 {
-                    if(options.One(x=>x.Text == text))
+                    if (options.One(x => x.Text == text))
                         OldStyleSelect.SelectByValue(options.First(x => x.Text == text).GetAttribute("value"));
                     else
                         OldStyleSelect.SelectByValue(options.First().GetAttribute("value"));

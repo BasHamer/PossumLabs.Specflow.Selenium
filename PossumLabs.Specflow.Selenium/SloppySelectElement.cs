@@ -91,9 +91,9 @@ namespace PossumLabs.Specflow.Selenium
                         OldStyleSelect.SelectByValue(options.First().GetAttribute("value"));
                         return;
                     }
-                    if(options.Many())
+                    if (options.Many())
                     {
-                        if(options.One(x=>x.Text.ToUpper() == text.ToUpper()))
+                        if (options.One(x => x.Text.ToUpper() == text.ToUpper()))
                             OldStyleSelect.SelectByValue(options.First(x => x.Text.ToUpper() == text.ToUpper()).GetAttribute("value"));
                         else
                             OldStyleSelect.SelectByValue(options.First().GetAttribute("value"));
@@ -125,9 +125,9 @@ namespace PossumLabs.Specflow.Selenium
                 else if (options.Many())
                     throw new GherkinException("too many matches"); //TODO: cleanup
                 else
-                    throw new GherkinException("no matches"); 
-            }
+                    throw new GherkinException("no matches");
         }
+    }
 
         protected virtual System.Collections.ObjectModel.ReadOnlyCollection<IWebElement> FindByContains(string id, string key)
             => base.WebDriver.FindElements(
