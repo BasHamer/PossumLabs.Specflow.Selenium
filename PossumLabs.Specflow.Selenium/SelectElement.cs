@@ -22,12 +22,19 @@ namespace PossumLabs.Specflow.Selenium
             else
             {
                 var listId = element.GetAttribute("list");
+                if (string.IsNullOrWhiteSpace(listId))
+                    throw new Exception("The {element.TagName} is neither a select element nor an element with a list attribute");
                 LazyAvailableOptions = new Lazy<IList<IWebElement>>(() => driver.FindElements(By.XPath($"//datalist[@id='{listId}']/option")));
                 LazySelectedOptions = new Lazy<IList<IWebElement>>(() => new List<IWebElement>());
                 var value = element.GetAttribute("value");
                 if (!string.IsNullOrWhiteSpace(value))
                 {
-                    SelectedOptions.Add(AvailableOptions.First(o => o.GetAttribute("value") == value));
+                    var selected = AvailableOptions.Where(o => o.GetAttribute("value") == value);
+                    if (selected.None())
+                        throw new Exception($"element with list:{listId} and value:{value} did not find any mathching options in the {AvailableOptions.Count()} options");
+                    if (selected.Many())
+                        throw new Exception($"element with list:{listId} and value:{value} found {selected.Count()} mathching options in the {AvailableOptions.Count()} options");
+                    SelectedOptions.Add(selected.First());
                 }
             }
         }
