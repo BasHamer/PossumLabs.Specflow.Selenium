@@ -21,9 +21,9 @@ namespace PossumLabs.Specflow.Selenium.Selectors
         {
             public WebElementSource(string page, By by, int order)
             {
-                page = Page;
-                by = By;
-                order = Order;
+                Page = page;
+                By= by;
+                Order = order;
             }
             public string Page { get; }
             public By By { get; }
