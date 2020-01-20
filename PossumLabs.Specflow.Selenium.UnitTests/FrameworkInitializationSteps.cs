@@ -34,6 +34,10 @@ namespace PossumLabs.Specflow.Selenium.Integration
         private ScreenshotProcessor ScreenshotProcessor { get; set; }
         private ImageLogging ImageLogging { get; set; }
         private MovieLogger MovieLogger { get; set; }
+        private WebElementSourceLog WebElementSourceLog { get; set; }
+        private NetworkWatcher NetworkWatcher { get; set; }
+
+        private DefaultLogger Logger { get; set; }
 
         [BeforeScenario(Order = int.MinValue + 1)]
         public void Setup()
@@ -47,11 +51,22 @@ namespace PossumLabs.Specflow.Selenium.Integration
             MovieLogger.StepEnd($"{ScenarioContext.StepContext.StepInfo.StepDefinitionType} {ScenarioContext.StepContext.StepInfo.Text}");
         }
 
+        [BeforeStep]
+        public void NetworkWatcherHook()
+        {
+            if (WebDriverManager.IsInitialized)
+                if(!WebDriver.HasAlert)
+                    NetworkWatcher.AddUrl(WebDriver.Url);
+        }
+
         [AfterScenario]
         public void LogScreenshots()
         {
             if(MovieLogger.IsEnabled)
                 MovieLogger.ComposeMovie();
+            WebElementSourceLog.Log(Logger);
+            NetworkWatcher.Log(Logger);
+
         }
 
         [AfterScenario(Order = int.MinValue + 1)]
@@ -83,10 +98,13 @@ namespace PossumLabs.Specflow.Selenium.Integration
               .AddEnvironmentVariables()
               .Build();
 
+            NetworkWatcher = new NetworkWatcher();
+
             var configFactory = new ConfigurationFactory(config);
 
             ObjectContainer.RegisterInstanceAs(configFactory.Create<MovieLoggerConfig>());
             ObjectContainer.RegisterInstanceAs(configFactory.Create<ImageLoggingConfig>());
+            WebElementSourceLog = new WebElementSourceLog();
 
             ImageLogging = new ImageLogging(ObjectContainer.Resolve<ImageLoggingConfig>());
             Register(new FileManager(new DatetimeManager(() => DateTime.Now)));
@@ -96,8 +114,8 @@ namespace PossumLabs.Specflow.Selenium.Integration
             ObjectContainer.RegisterInstanceAs(ImageLogging);
             ObjectContainer.RegisterInstanceAs(MovieLogger);
 
-            var logger = new DefaultLogger(new DirectoryInfo(Environment.CurrentDirectory));
-            Register((PossumLabs.Specflow.Core.Logging.ILog)logger);
+            Logger = new DefaultLogger(new DirectoryInfo(Environment.CurrentDirectory), new YamlLogFormatter());
+            Register((PossumLabs.Specflow.Core.Logging.ILog)Logger);
             Register<ElementFactory>(new ElementFactory());
             Register<XpathProvider>(new XpathProvider());
             Register<SelectorFactory>(new SelectorFactory(ElementFactory, XpathProvider).UseBootstrap());
@@ -148,7 +166,8 @@ namespace PossumLabs.Specflow.Selenium.Integration
                 SelectorFactory,
                 ElementFactory,
                 XpathProvider,
-                ObjectContainer.Resolve<MovieLogger>());
+                ObjectContainer.Resolve<MovieLogger>(), 
+                WebElementSourceLog);
 
         [BeforeScenario(Order = 1)]
         public void SetupExistingData()

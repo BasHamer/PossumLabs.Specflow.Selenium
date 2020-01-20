@@ -25,7 +25,6 @@ namespace PossumLabs.Specflow.Selenium.Integration
         protected ScenarioContext ScenarioContext { get => ObjectContainer.Resolve<ScenarioContext>(); }
         protected FeatureContext FeatureContext { get => ObjectContainer.Resolve<FeatureContext>(); }
 
-
         protected Interpeter Interpeter => ObjectContainer.Resolve<Interpeter>();
         protected ActionExecutor Executor => ObjectContainer.Resolve<ActionExecutor>();
         protected ILog Log => ObjectContainer.Resolve<ILog>();
@@ -34,9 +33,6 @@ namespace PossumLabs.Specflow.Selenium.Integration
         protected FileManager FileManager => ObjectContainer.Resolve<FileManager>();
 
         protected ScenarioMetadata Metadata => ObjectContainer.Resolve<ScenarioMetadata>();
-
-
-
 
         internal void Register<T>(T item) where T : class
             => ObjectContainer.RegisterInstanceAs<T>(item, dispose: true);

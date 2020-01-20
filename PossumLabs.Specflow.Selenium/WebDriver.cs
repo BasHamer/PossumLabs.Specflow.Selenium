@@ -28,6 +28,7 @@ namespace PossumLabs.Specflow.Selenium
             ElementFactory elementFactory,
             XpathProvider xpathProvider,
             MovieLogger movieLogger,
+            WebElementSourceLog webElementSourceLog,
             IEnumerable<SelectorPrefix> prefixes = null)
         {
             SeleniumDriver = seleniumDriver;
@@ -43,6 +44,7 @@ namespace PossumLabs.Specflow.Selenium
             Screenshots = new List<byte[]>();
             ElementFactory = elementFactory;
             XpathProvider = xpathProvider;
+            WebElementSourceLog = webElementSourceLog;
         }
 
         private ElementFactory ElementFactory { get; }
@@ -62,12 +64,13 @@ namespace PossumLabs.Specflow.Selenium
         private SelectorFactory SelectorFactory { get; }
         private List<Searcher> SuccessfulSearchers { get; }
         private MovieLogger MovieLogger { get; }
+        public WebElementSourceLog WebElementSourceLog { get; set; }
 
         public TableElement GetTables(IEnumerable<string> headers, StringComparison comparison = StringComparison.CurrentCulture, int? index = null )
         => RetryExecutor.RetryFor(() =>
         {
             
-            var loggingWebdriver = new LoggingWebDriver(SeleniumDriver, MovieLogger);
+            var loggingWebdriver = new LoggingWebDriver(SeleniumDriver, MovieLogger, WebElementSourceLog);
             try
             {
                 var possilbeTables = GetTables(headers.Count()).ToList();
@@ -181,7 +184,7 @@ namespace PossumLabs.Specflow.Selenium
         public Element Select(Selector selector, TimeSpan? retryDuration = null, int? index = null)
             => RetryExecutor.RetryFor(() =>
              {
-                 var loggingWebdriver = new LoggingWebDriver(SeleniumDriver, MovieLogger);
+                 var loggingWebdriver = new LoggingWebDriver(SeleniumDriver, MovieLogger, WebElementSourceLog);
                  try
                  {
                      var element = FindElement(selector, loggingWebdriver, index);
@@ -216,7 +219,7 @@ namespace PossumLabs.Specflow.Selenium
         public IEnumerable<Element> SelectMany(Selector selector)
             => RetryExecutor.RetryFor(() =>
             {
-                var loggingWebdriver = new LoggingWebDriver(SeleniumDriver, MovieLogger);
+                var loggingWebdriver = new LoggingWebDriver(SeleniumDriver, MovieLogger, WebElementSourceLog);
                 try
                 {
                     var elements = FindElements(selector, loggingWebdriver);
@@ -326,12 +329,24 @@ namespace PossumLabs.Specflow.Selenium
             foreach (var w in wrappers)
             {
                 if (w.Element != null)
+                {
+                    AugmentWebElementSources(selector, w.Element.WebElement);
                     return w.Element;
+                }
                 if (w.Exception != null)
                     throw new AggregateException($"Error throw on xpath {wrapperIndex}", w.Exception);
                 wrapperIndex++;
             }
             return null;
+        }
+
+        private void AugmentWebElementSources(Selector selector, IWebElement e)
+        {
+            var s = WebElementSourceLog.Get(e);
+            if (s == null)
+                return;
+            s.SelectorType = selector.Type;
+            s.SelectorConstructor = selector.Constructor;
         }
 
         private IEnumerable<Element> FindElements(Selector selector, LoggingWebDriver loggingWebdriver)
@@ -352,7 +367,16 @@ namespace PossumLabs.Specflow.Selenium
             foreach (var w in wrappers)
             {
                 if (w.Elements != null)
+                {
+                    if (w.Elements.Any())
+                    {
+                        foreach (var e in w.Elements)
+                        {
+                            AugmentWebElementSources(selector, e.WebElement);
+                        }
+                    }
                     return w.Elements;
+                }
                 if (w.Exception != null)
                     throw new AggregateException($"Error throw on xpath {index}", w.Exception);
                 index++;
@@ -451,6 +475,7 @@ namespace PossumLabs.Specflow.Selenium
                 ElementFactory,
                 XpathProvider,
                 MovieLogger,
+                WebElementSourceLog,
                 new List<SelectorPrefix> { p }
                 );
 

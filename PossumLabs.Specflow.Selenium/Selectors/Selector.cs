@@ -14,7 +14,7 @@ namespace PossumLabs.Specflow.Selenium.Selectors
             SequencedByOrder = sequencedByOrder;
         }
 
-        private string Constructor { get; set; }
+        public string Constructor { get; private set; }
         private By By { get; set; }
         private string Label { get; set; }
         private List<Func<string, IEnumerable<SelectorPrefix>, IWebDriver, IEnumerable<Element>>> SequencedByOrder { get; set; }

@@ -11,6 +11,8 @@ using OpenQA.Selenium.Internal;
 using OpenQA.Selenium.Interactions;
 using PossumLabs.Specflow.Core.Logging;
 using System.Diagnostics;
+using PossumLabs.Specflow.Selenium.Selectors;
+using static PossumLabs.Specflow.Selenium.Selectors.WebElementSourceLog;
 
 namespace PossumLabs.Specflow.Selenium
 {
@@ -18,17 +20,19 @@ namespace PossumLabs.Specflow.Selenium
     public class LoggingWebDriver : IWebDriver, ITakesScreenshot, IActionExecutor, IJavaScriptExecutor
 #pragma warning restore CS0618 // Type or member is obsolete
     {
-        public LoggingWebDriver(IWebDriver driver, MovieLogger movieLogger)
+        public LoggingWebDriver(IWebDriver driver, MovieLogger movieLogger, WebElementSourceLog webElementSourceLog)
         {
             SeleniumDriver = driver;
             Messages = new List<string>();
             Screenshots = new List<Screenshot>();
             MovieLogger = movieLogger;
+            WebElementSourceLog = webElementSourceLog;
         }
 
         private List<string> Messages { get; }
         private MovieLogger MovieLogger { get; }
         public List<Screenshot> Screenshots { get; }
+        public WebElementSourceLog WebElementSourceLog { get; set; }
 
         public string Url { get => SeleniumDriver.Url; set => SeleniumDriver.Url = value; }
 
@@ -60,8 +64,13 @@ namespace PossumLabs.Specflow.Selenium
         {
             Messages.Add(by.ToString());
             var element = SeleniumDriver.FindElement(by);
-            if (element != null && by.ToString().StartsWith("By.XPath: "))
-                VisualLog(by);
+            if (element != null)
+            {
+                if (by.ToString().StartsWith("By.XPath: "))
+                    VisualLog(by);
+                var url = SeleniumDriver.Url;
+                WebElementSourceLog.Add(element, url, by);
+            }
             return element;
         }
 
@@ -84,8 +93,14 @@ namespace PossumLabs.Specflow.Selenium
                 Messages.Add(by.ToString());
             }
             var elements = SeleniumDriver.FindElements(by);
-            if (elements != null && elements.Any() && by.ToString().StartsWith("By.XPath: "))
-                VisualLog(by);
+            if (elements != null && elements.Any())
+            {
+                var url = SeleniumDriver.Url;
+                if (by.ToString().StartsWith("By.XPath: "))
+                    VisualLog(by);
+                foreach (var e in elements)
+                    WebElementSourceLog.Add(e, url, by);
+            }
             return elements;
         }
 

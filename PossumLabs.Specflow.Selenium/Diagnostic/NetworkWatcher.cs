@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PossumLabs.Specflow.Core.Logging;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -9,7 +10,7 @@ namespace PossumLabs.Specflow.Selenium.Diagnostic
         public Predicate<string> UrlErrorTester { get; set; }
         public void AddUrl(string url)
         {
-            if(UrlErrorTester!= null && UrlErrorTester(url))
+            if (UrlErrorTester != null && UrlErrorTester(url))
                 ErrorOut(url);
             LastGoodUrl = url;
         }
@@ -22,13 +23,9 @@ namespace PossumLabs.Specflow.Selenium.Diagnostic
         public string LastGoodUrl { get; private set; }
         public string BadUrl { get; private set; }
 
-        public string LogFormat()
+        public void Log(ILog logger)
         {
-            return $"network watcher\n" +
-                $">begin\n" +
-                $"> last good url: {LastGoodUrl}\n"+
-                $"> bad url: {BadUrl}\n"+
-                $">end\n";
+            logger.Section(this.GetType().Name, new { LastGoodUrl = LastGoodUrl, BadUrl = BadUrl });
         }
     }
 }

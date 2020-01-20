@@ -19,8 +19,6 @@ namespace PossumLabs.Specflow.Selenium.Integration
 
         private ValidationFactory ValidationFactory;
 
-     
-
         [StepArgumentTransformation]
         public IEnumerable<IEnumerable<Validation>> TransformForContains(Table table) => 
             table.Rows.Select(r=>
@@ -40,6 +38,9 @@ namespace PossumLabs.Specflow.Selenium.Integration
         [StepArgumentTransformation]
         public Validation TransformValidation(string Constructor) => 
             ValidationFactory.Create(Constructor);
+
+        [StepArgumentTransformation]
+        public object Transform(string id) => Interpeter.Get<object>(id);
 
         [Then(@"'(.*)' has the values")]
         public void ThenTheCallHasTheValues(object o, IEnumerable<Validation> validations)
