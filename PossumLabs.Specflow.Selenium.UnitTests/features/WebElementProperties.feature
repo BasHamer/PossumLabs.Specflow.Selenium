@@ -30,3 +30,10 @@ Scenario: Tag Name
 	| <input id="target" type="text" style="display:none"></input> |
 	Given the Settable Element 'E1' found by '#target'
 	Then 'E1.TagName' has the value 'input'
+
+Scenario: Unknown Attribute (list)
+	Given injecting browser content
+	| Html														   |
+	| <input id="target" type="text"></input> |
+	Given the Settable Element 'E1' found by '#target'
+	Then Element 'E1' Attribute 'list' has the value 'null'

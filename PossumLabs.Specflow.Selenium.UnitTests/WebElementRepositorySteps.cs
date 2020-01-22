@@ -2,6 +2,7 @@
 using FluentAssertions;
 using OpenQA.Selenium;
 using PossumLabs.Specflow.Core;
+using PossumLabs.Specflow.Core.Validations;
 using PossumLabs.Specflow.Core.Variables;
 using PossumLabs.Specflow.Selenium.Selectors;
 using System;
@@ -102,5 +103,9 @@ namespace PossumLabs.Specflow.Selenium.Integration
                e.Should().NotBeNull();
                Add(text, new WebElementWrapper(e.WebElement));
            });
+
+        [Then(@"Element '(.*)' Attribute '(.*)' has the value '(.*)'")]
+        public void ThenElementAttributeHasTheValue(WebElementWrapper e, ResolvedString attribute, Validation validation)
+            => Executor.Execute(() => e.GetAttribute(attribute).Validate(validation));
     }
 }
