@@ -13,7 +13,7 @@ This library is intended to be used with Specflow and adds a wrapper around sele
     <PackageProjectUrl>https://PossumLabs.com</PackageProjectUrl>
     <RepositoryUrl>https://github.com/BasHamer/PossumLabs.Specflow.Core</RepositoryUrl>
     <RepositoryType>Git</RepositoryType>
-    <PackageTags>BDD, SpecFlow, gherkin, cucumber, Selenium</PackageTags>
+    <PackageTags>DSL, BDD, SpecFlow, gherkin, cucumber, Selenium</PackageTags>
     <PackageReleaseNotes>initial version</PackageReleaseNotes>
   </PropertyGroup>
 
