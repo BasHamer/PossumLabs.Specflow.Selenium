@@ -159,7 +159,8 @@ namespace PossumLabs.DSL
 
         protected virtual void SetupExistingData()
         {
-            new PossumLabs.Specflow.Core.Variables.ExistingDataManager(this.Interpeter).Initialize(Assembly.GetExecutingAssembly());
+            new PossumLabs.Specflow.Core.Variables.ExistingDataManager(this.Interpeter)
+                .Initialize(this.GetType().Assembly);
         }
     }
 }
