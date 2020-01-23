@@ -19,8 +19,26 @@ namespace PossumLabs.DSL.English.Integration
     [Binding]
     public class UserRepositorySteps : RepositoryStepBase<User>
     {
-        public UserRepositorySteps(IObjectContainer objectContainer) : base(objectContainer)
+        public UserRepositorySteps(
+            IObjectContainer objectContainer, 
+            DriverSteps driverSteps) : base(objectContainer)
         {
+            DriverSteps = driverSteps;
+        }
+
+        private DriverSteps DriverSteps { get; }
+
+        [Given("logged in as User '(.*)'")]
+        public void GivenLoggedInAs(User user)
+        {
+            //Given navigated to 'https://possumlabs.pipedrive.com/'
+            DriverSteps.GivenNavigatedTo(@"https://possumlabs.pipedrive.com/");
+            //When entering 'Admin.Email' into element 'Email'
+            DriverSteps.WhenEnteringForTheElement(user.Email, @"Email");
+            //And entering 'Admin.Password' into element 'Password'
+            DriverSteps.WhenEnteringForTheElement(user.Password, @"Password");
+            //And clicking the element 'Log in'
+            DriverSteps.WhenClickingTheElement(@"Log in");
         }
     }
 }

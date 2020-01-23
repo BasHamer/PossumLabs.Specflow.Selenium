@@ -7,3 +7,5 @@ Scenario: Simple Login
 	And clicking the element 'Log in'
 	Then the page contains the element 'Add deal'
 
+Scenario: Simple Login
+	Given logged in as User 'Admin'
