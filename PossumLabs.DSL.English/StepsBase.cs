@@ -1,4 +1,5 @@
 ﻿using BoDi;
+using PossumLabs.DSL.DataGeneration;
 using PossumLabs.Specflow.Core;
 using PossumLabs.Specflow.Core.Exceptions;
 using PossumLabs.Specflow.Core.Files;
@@ -26,6 +27,7 @@ namespace PossumLabs.DSL
         protected ObjectFactory ObjectFactory => ObjectContainer.Resolve<ObjectFactory>();
         protected TemplateManager TemplateManager => ObjectContainer.Resolve<TemplateManager>();
         protected FileManager FileManager => ObjectContainer.Resolve<FileManager>();
+        protected DataGenerator DataGenerator => ObjectContainer.Resolve<DataGenerator>();
 
         protected ScenarioMetadata Metadata => ObjectContainer.Resolve<ScenarioMetadata>();
 

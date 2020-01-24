@@ -30,6 +30,7 @@ namespace PossumLabs.Specflow.Selenium.Selectors
                         RadioByName,
                         ByFollowingMarker(XpathProvider.SettableElements),
                         ByCellBelow(XpathProvider.SettableElements),
+                        ByLabelAncestor(XpathProvider.ActiveElements),
                     }
                 },
                 {
@@ -45,6 +46,7 @@ namespace PossumLabs.Specflow.Selenium.Selectors
                         SpecialButtons,
                         ByFollowingMarker(XpathProvider.ClickableElements),
                         ByCellBelow(XpathProvider.ClickableElements),
+                        ByTypeAncestor(XpathProvider.ActiveElements),
                     }
                 },
                 {
@@ -61,6 +63,8 @@ namespace PossumLabs.Specflow.Selenium.Selectors
                         SpecialButtons,
                         ByFollowingMarker(XpathProvider.ActiveElements),
                         ByCellBelow(XpathProvider.ActiveElements),
+                        ByLabelAncestor(XpathProvider.ActiveElements),
+                        ByTypeAncestor(XpathProvider.ActiveElements),
                     }
                 },
                 {
@@ -230,6 +234,20 @@ namespace PossumLabs.Specflow.Selenium.Selectors
         virtual protected Func<string, IEnumerable<SelectorPrefix>, IWebDriver, IEnumerable<Element>> ByNestedInLabel(string elementType) =>
             (target, prefixes, driver) => Permutate(prefixes, driver, (prefix) => 
                 $"{prefix}//*[(self::label or self::div) and {XpathProvider.TextMatch(target)}]/*[{elementType}]");
+
+
+        //<label><span><strong>target</strong></span><input type = "text" ></ label >
+        //*[text()='{target}']/ancestor::label//*[self::input or self::textarea or self::select]
+        virtual protected Func<string, IEnumerable<SelectorPrefix>, IWebDriver, IEnumerable<Element>> ByLabelAncestor(string elementType) =>
+            (target, prefixes, driver) => Permutate(prefixes, driver, (prefix) =>
+                $"{prefix}//*[{XpathProvider.MarkerElements} and {XpathProvider.TextMatch(target)}]/ancestor::label//*[{elementType}]");
+
+        //<button><span>target</span></button>  
+        //*[text()='{target}']/ancestor::*[]
+        virtual protected Func<string, IEnumerable<SelectorPrefix>, IWebDriver, IEnumerable<Element>> ByTypeAncestor(string elementType) =>
+            (target, prefixes, driver) => Permutate(prefixes, driver, (prefix) =>
+                $"{prefix}//*[{XpathProvider.MarkerElements} and {XpathProvider.TextMatch(target)}]/parent::*[{elementType}]");
+
 
         virtual protected Func<string, IEnumerable<SelectorPrefix>, IWebDriver, IEnumerable<Element>> SpecialButtons =>
             (target, prefixes, driver) => Permutate(prefixes, driver, (prefix) =>

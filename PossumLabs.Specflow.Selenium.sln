@@ -9,9 +9,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PossumLabs.Specflow.Seleniu
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PossumLabs.Specflow.Selenium.Test", "PossumLabs.Specflow.Selenium.Test\PossumLabs.Specflow.Selenium.Test.csproj", "{84185483-E3A5-4F7A-9414-82154EF2D4A3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PossumLabs.DSL.English", "PossumLabs.DSL.English\PossumLabs.DSL.English.csproj", "{713419B5-6DCA-42AB-B1FC-1303E5F6114B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PossumLabs.DSL.English", "PossumLabs.DSL.English\PossumLabs.DSL.English.csproj", "{713419B5-6DCA-42AB-B1FC-1303E5F6114B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PossumLabs.DSL.English.Integration", "PossumLabs.DSL.English.Integration\PossumLabs.DSL.English.Integration.csproj", "{47EE3DEE-11BB-4DFD-A176-04B89759A3C7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PossumLabs.DSL.English.Integration", "PossumLabs.DSL.English.Integration\PossumLabs.DSL.English.Integration.csproj", "{47EE3DEE-11BB-4DFD-A176-04B89759A3C7}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PossumLabs.DSL.DataGeneration", "PossumLabs.DSL.DataGeneration\PossumLabs.DSL.DataGeneration.csproj", "{4AC43A73-F700-4DD3-9C59-F44A0770E786}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{47EE3DEE-11BB-4DFD-A176-04B89759A3C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{47EE3DEE-11BB-4DFD-A176-04B89759A3C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{47EE3DEE-11BB-4DFD-A176-04B89759A3C7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4AC43A73-F700-4DD3-9C59-F44A0770E786}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4AC43A73-F700-4DD3-9C59-F44A0770E786}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4AC43A73-F700-4DD3-9C59-F44A0770E786}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4AC43A73-F700-4DD3-9C59-F44A0770E786}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

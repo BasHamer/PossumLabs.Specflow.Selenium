@@ -16,6 +16,8 @@ Examples:
 	| textarea nested          | target | Bob   | <label>target<textarea></textarea></label>                                                              |
 	| textarea aria-label      | target | Bob   | <textarea aria-label="target"></textarea>                                                               |
 	| textarea aria-labelledby | t1 t2  | Bob   | <textarea aria-labelledby= "l1 l2"></textarea><label id="l1">t1</label><label id="l2">t2</label>        |
+	| input nested deeper      | target | Bob   | <label><span><strong>target</strong></span><span><input type="text"></span></label>                     |
+
 
 Scenario Outline: setting number inputs
 	Given injecting browser content

@@ -4,6 +4,7 @@ using Microsoft.Extensions.Configuration;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Remote;
+using PossumLabs.DSL.DataGeneration;
 using PossumLabs.Specflow.Core;
 using PossumLabs.Specflow.Core.Configuration;
 using PossumLabs.Specflow.Core.Exceptions;
@@ -112,8 +113,9 @@ namespace PossumLabs.DSL
                 this.ObjectFactory,
                 new SeleniumGridConfiguration()));
 
-            
-            
+            var dataGeneratorRepository = new DataGeneratorRepository(Interpeter, ObjectFactory);
+            Register<DataGenerator>(dataGeneratorRepository.BuildGenerator());
+
 
             var templateManager = new PossumLabs.Specflow.Core.Variables.TemplateManager();
             templateManager.Initialize(Assembly.GetExecutingAssembly());
